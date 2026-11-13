@@ -57,6 +57,13 @@ y abre `http://localhost:8000`.
 
 Diseño terminado y en fabricación (noviembre de 2026). Las mediciones de la placa real se agregarán en [docs/resultado.md](docs/resultado.md) cuando llegue.
 
+## Licencia
+
+Puedes usar, copiar y modificar este proyecto siempre que des crédito a Alain Iribe Haddad.
+
+- Diseño de la placa, documentación e imágenes: [Creative Commons Atribución 4.0 (CC BY 4.0)](LICENSE).
+- Firmware de prueba (`firmware/`): [licencia MIT](firmware/LICENSE).
+
 ## Autor
 
 Alain Iribe Haddad · Ingeniería Mecatrónica, Universidad Anáhuac Querétaro · Equipo DELTA

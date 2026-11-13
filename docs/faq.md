@@ -42,4 +42,4 @@ Este repositorio documenta solo la placa e incluye su firmware de prueba. El fir
 
 ## ¿Puedo fabricar una igual?
 
-Los Gerbers, el BOM y el archivo de posiciones están en [Archivos de diseño](hardware/archivos.md). Con eso un fabricante puede producirla y ensamblarla.
+Los Gerbers, el BOM y el archivo de posiciones están en [Archivos de diseño](hardware/archivos.md). Con eso un fabricante puede producirla y ensamblarla. El proyecto tiene licencia CC BY 4.0: se puede usar y modificar dando crédito al autor.
