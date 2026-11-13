@@ -29,7 +29,7 @@ Una PCB genera archivos de varios tipos (PDF, Gerbers, hojas de cálculo, códig
 - **Historial real.** Cada cambio queda con fecha, autor y mensaje. Cuando lleguen las mediciones de la placa, el cambio en la documentación queda registrado junto con cualquier corrección al diseño.
 - **Markdown se lee en cualquier parte.** GitHub muestra los `.md` ya con formato, así que la documentación se puede leer aunque el sitio no esté publicado.
 - **Sin compilación.** El sitio es una página que carga los Markdown directamente. Editar un archivo y subirlo es todo el proceso de publicación.
-- **Es lo que usa la industria.** Los fabricantes de tarjetas de evaluación publican su documentación de esta forma, y conocer el flujo sirve más allá de esta materia.
+- **Así se trabaja afuera.** El sitio de referencia de la clase, de una tarjeta de evaluación comercial, está hecho de esta forma. Conocer el flujo sirve más allá de esta materia.
 
 ## GitHub o Bitbucket
 

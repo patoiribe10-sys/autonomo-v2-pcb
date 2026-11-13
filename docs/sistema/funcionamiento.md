@@ -23,9 +23,9 @@ Todo gira alrededor del ESP32 (U3). A la izquierda de la figura están las entra
 
 ## Paro de emergencia
 
-El motor no se alimenta directo de VBAT sino de VBAT_MOT, que pasa por el MOSFET Q8. La compuerta de Q8 está conectada al pin 3 de J10. Mientras ese pin esté unido a GND (pin 4) a través del botón de paro, que es normalmente cerrado, Q8 conduce. Al oprimir el paro o si el cable se desconecta, la compuerta sube a VBAT por R41 y Q8 se abre: el puente H se queda sin energía.
+El motor se alimenta de VBAT_MOT, una rama de la batería que pasa por el MOSFET Q8. La compuerta de Q8 está conectada al pin 3 de J10. Mientras ese pin esté unido a GND (pin 4) a través del botón de paro, que es normalmente cerrado, Q8 conduce. Al oprimir el paro o si el cable se desconecta, la compuerta sube a VBAT por R41 y Q8 se abre: el puente H se queda sin energía.
 
-Es un corte por hardware. El ESP32 solo se entera, leyendo el voltaje de la compuerta con un divisor (IO39), para avisarle a la Jetson. El servo y la Jetson siguen encendidos, así el carro conserva la dirección y no pierde el estado del programa.
+Es un corte por hardware. El ESP32 solo se entera: lee el voltaje de la compuerta con un divisor (IO39) y le avisa a la Jetson. El servo y la Jetson siguen encendidos. Así el carro conserva la dirección y no pierde el estado del programa.
 
 ## Supervisión
 
@@ -35,4 +35,4 @@ Es un corte por hardware. El ESP32 solo se entera, leyendo el voltaje de la comp
 
 ## Programación
 
-La computadora se conecta por USB-C. El CH340C (U4) convierte USB a serial y, con los transistores Q1 y Q2, usa las líneas DTR y RTS para poner al ESP32 en modo de carga sin tocar botones. Los botones EN (S1) y BOOT (S2) están por si hace falta hacerlo a mano. El paso a paso está en [Programar el ESP32](../guia/programar.md).
+La computadora se conecta por USB-C. El CH340C (U4) convierte USB a serial. Con ayuda de los transistores Q1 y Q2 pone al ESP32 en modo de carga él solo, sin tocar botones. Los botones EN (S1) y BOOT (S2) están por si hace falta hacerlo a mano. El paso a paso está en [Programar el ESP32](../guia/programar.md).

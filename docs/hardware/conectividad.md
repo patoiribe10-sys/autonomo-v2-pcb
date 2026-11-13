@@ -69,7 +69,7 @@ El ESP32-WROOM-32E trae el radio integrado, con antena en el mismo módulo. No h
 - Debajo de la antena no hay cobre en ninguna de las cuatro capas.
 - Los reguladores conmutados quedaron en el lado opuesto de la placa.
 
-**Para qué se piensa usar:** ver velocidad, voltaje de batería y estado del paro desde un teléfono mientras el carro corre, y ajustar parámetros como las ganancias del control sin conectar un cable. Con Bluetooth clásico el ESP32 se presenta como un puerto serial, así que basta una aplicación de terminal.
+**Para qué se piensa usar:** ver desde un teléfono la velocidad, el voltaje de batería y el estado del paro mientras el carro corre. También para ajustar parámetros, como las ganancias del control, sin conectar un cable. Con Bluetooth clásico el ESP32 se presenta como un puerto serial, así que basta una aplicación de terminal.
 
 Un ejemplo mínimo con el framework Arduino:
 

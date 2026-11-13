@@ -20,7 +20,7 @@
 | Barreno mínimo | 0.3 mm |
 | Montaje | 148 piezas, solo en la cara superior |
 
-El límite de 100 × 100 mm no es casual: es el tamaño hasta el que el fabricante cobra la tarifa de prototipo.
+Se respetó el límite de 100 × 100 mm porque hasta ese tamaño el fabricante cobra la tarifa de prototipo.
 
 ## Apilado de capas
 
@@ -33,7 +33,7 @@ El límite de 100 × 100 mm no es casual: es el tamaño hasta el que el fabrican
 
 ![Las cuatro capas de cobre](../../assets/img/capas.png "Figura 1. Cobre de cada capa generado a partir de los Gerbers: L1 arriba a la izquierda, L2 (GND) arriba a la derecha, L3 (potencia) abajo a la izquierda y L4 abajo a la derecha.")
 
-Se eligieron cuatro capas por dos motivos. El primero es el plano de GND sin cortes en L2, que le da a cada señal su retorno justo debajo y mantiene cortos los lazos de los reguladores conmutados. El segundo es de espacio: con tres reguladores, el puente H y quince conectores en 10 × 10 cm, en dos capas la potencia y las señales se estorbaban.
+Se eligieron cuatro capas por dos motivos. El primero es el plano de GND sin cortes en L2: cada señal tiene su retorno justo debajo y los lazos de los reguladores conmutados quedan cortos. El segundo es de espacio. Con tres reguladores, el puente H y quince conectores en 10 × 10 cm, en dos capas la potencia y las señales se estorbaban.
 
 En la Figura 1 se ve el rectángulo sin cobre de la parte de arriba, igual en las cuatro capas. Es la zona libre debajo de la antena del ESP32.
 
@@ -42,7 +42,7 @@ En la Figura 1 se ve el rectángulo sin cobre de la parte de arriba, igual en la
 - **La energía avanza en orden.** Batería, fusible y protección en la esquina inferior izquierda; los reguladores de 10 V y del servo sobre el borde de abajo, cada uno junto al conector que alimenta.
 - **Lazos de conmutación compactos.** En cada regulador, el capacitor de entrada, el integrado, el diodo y el inductor están pegados.
 - **Lo sensible, lejos.** Encoder, UART, I2C y USB quedaron a 15 mm o más de cualquier nodo de conmutación.
-- **Conectores en la orilla,** con el nombre de su función en la serigrafía ("MOTOR + ENCODER", "SERIAL JETSON") para que cualquiera del equipo pueda conectar el carro sin abrir el esquemático.
+- **Conectores en la orilla.** La serigrafía dice para qué es cada uno ("MOTOR + ENCODER", "SERIAL JETSON"), así cualquiera del equipo conecta el carro sin abrir el esquemático.
 - **Pasivos alineados** con el pin que atienden, en cuadrícula.
 
 ![Vista superior del modelo 3D](../../assets/img/pcb-vista-superior.png "Figura 2. Vista superior del modelo 3D con la máscara negra. Abajo a la izquierda, el XT60 y el capacitor de entrada.")
@@ -72,13 +72,13 @@ Las redes se agruparon en clases para darle a cada una el ancho que necesita.
 | Serigrafía a pad y entre textos | 4 mil |
 | Conexión a planos | Alivio térmico de 4 brazos, 10 mil |
 
-En las zonas alrededor de los integrados de paso fino hay una regla local que permite pistas de 0.2 mm, porque una pista de potencia de 1.5 mm no entra en un pad de 0.4 mm. Fuera de esas zonas aplica el ancho completo.
+Una pista de potencia de 1.5 mm no entra en un pad de 0.4 mm. Por eso, alrededor de los integrados de paso fino hay una regla local que permite pistas de 0.2 mm. Fuera de esas zonas aplica el ancho completo.
 
 ## Ruteo
 
-La potencia y los lazos de los reguladores se trazaron primero, con polígonos donde hacía falta más cobre. Para el resto se intentó el autorouter de Altium y no terminó, así que las pistas que faltaban se cerraron con un ruteador propio: un script lee el cobre existente, busca cada camino con A* revisando la separación en cada tramo y dibuja pistas y vías.
+La potencia y los lazos de los reguladores se trazaron primero, con polígonos donde hacía falta más cobre. Para el resto se intentó el autorouter de Altium, pero no terminó. Las pistas que faltaban se cerraron con un ruteador propio: un script que lee el cobre existente, busca cada camino con A* y revisa la separación en cada tramo antes de dibujar.
 
-Además de L2, hay polígonos de GND en L1 y L4 unidos con 172 vías de cosido.
+L1 y L4 también llevan polígonos de GND, unidos al plano de L2 con 172 vías de cosido.
 
 ## Verificación
 

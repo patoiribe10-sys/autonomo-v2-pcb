@@ -18,7 +18,7 @@ El pedido es de cinco placas, dos de ellas ensambladas con todos los componentes
 
 ![Vista superior de la placa terminada](../assets/img/pcb-vista-superior.png "Figura 1. Vista superior del modelo 3D de Altium con los acabados del pedido: máscara negra y serigrafía blanca.")
 
-En el centro de la placa están el logotipo del equipo DELTA, la "A" de la Anáhuac y el nombre del diseñador, en una zona que se dejó libre de componentes.
+En el centro se dejó una zona sin componentes para el logotipo del equipo DELTA, la "A" de la Anáhuac y el nombre del diseñador.
 
 ## Lo que ya se puede afirmar
 

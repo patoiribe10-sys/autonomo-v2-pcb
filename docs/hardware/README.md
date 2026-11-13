@@ -21,7 +21,7 @@
 
 ![Vista superior con los componentes numerados](../../assets/img/fig-ubicacion.png "Figura 1. Cara superior de la placa. Los números corresponden a la Tabla 1.")
 
-La placa se acomodó siguiendo el camino de la energía. La batería entra por la esquina inferior izquierda, los reguladores quedan a lo largo del borde de abajo y el ESP32 está arriba, con la antena pegada al borde y sin cobre debajo. Todos los conectores están en la orilla, con la boca hacia afuera.
+La placa se acomodó siguiendo el camino de la energía. La batería entra por la esquina inferior izquierda y los reguladores quedan a lo largo del borde de abajo. El ESP32 está arriba, con la antena pegada al borde y sin cobre debajo. Todos los conectores están en la orilla, con la boca hacia afuera.
 
 **Tabla 1.** Componentes señalados en la Figura 1.
 

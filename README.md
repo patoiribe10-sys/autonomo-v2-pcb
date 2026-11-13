@@ -6,7 +6,7 @@ Documentación de la placa de control del carro autónomo a escala 1:10 del equi
 
 ![Vista superior de la placa](assets/img/pcb-vista-superior.png)
 
-La placa recibe una batería LiPo 3S, genera 10 V para una Jetson Orin Nano, 5 V para la lógica, 5 V aparte para el servo y 3.3 V, y lleva un ESP32-WROOM-32E que controla el motor y la dirección. Son 4 capas en 100 × 100 mm, diseñada en Altium Designer y fabricada con ensamblaje en PCBWay.
+La placa recibe una batería LiPo 3S y saca de ahí cuatro voltajes: 10 V para una Jetson Orin Nano, 5 V para la lógica, 5 V aparte para el servo y 3.3 V. Lleva un ESP32-WROOM-32E que controla el motor y la dirección. Son 4 capas en 100 × 100 mm, diseñada en Altium Designer y fabricada con ensamblaje en PCBWay.
 
 ## Contenido
 

@@ -34,7 +34,7 @@ El motor es un GM25-370 con encoder. El TB6612 entrega 1.2 A continuos por canal
 
 ### Dos TPS54560B y un TPS565201
 
-La Jetson pide hasta 25 W y el servo MG995 tiene picos de 2.5 a 3 A. Los dos se alimentan con un TPS54560B, que aguanta 5 A y hasta 60 V de entrada. Se usa la versión "B" porque la que no tiene esa letra ya aparece como no recomendada para diseños nuevos. No es síncrono, por eso cada uno lleva su diodo Schottky (D3 y D4).
+La Jetson pide hasta 25 W y el servo MG995 tiene picos de 2.5 a 3 A. Cada uno tiene su TPS54560B, que aguanta 5 A y hasta 60 V de entrada. Se usa la versión "B" porque la que no tiene esa letra ya aparece como no recomendada para diseños nuevos. Como no es síncrono, cada uno lleva su diodo Schottky (D3 y D4).
 
 La lógica consume menos de medio ampere, así que para ella basta el TPS565201, que es síncrono y no necesita diodo externo.
 

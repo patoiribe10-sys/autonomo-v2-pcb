@@ -47,7 +47,7 @@ De ahí sale el fusible de 10 A: deja pasar el pico normal y abre si algo entra 
 
 Son los mismos 10 V con los que la Jetson ya trabajaba en el carro, antes generados por un módulo XL4016 externo; quedan por debajo de la batería de 11.1 V para que el regulador tenga margen. El TPS54560B trabaja a 500 kHz con un inductor de 4.7 µH; el rizado de corriente calculado es de unos 0.9 A.
 
-Tiene una limitación que se conoce y se aceptó: un regulador reductor no puede entregar más de lo que recibe. Con la batería muy descargada VBAT se acerca a 10 V y la salida baja con ella. La Jetson no se apaga, pero puede reiniciarse. Se maneja cuidando la carga y el balance de las celdas, y con el aviso de batería baja por buzzer.
+Tiene una limitación conocida: un regulador reductor no puede entregar más de lo que recibe. Con la batería muy descargada, VBAT se acerca a 10 V y la salida baja con ella. La Jetson no se apaga, pero puede reiniciarse. Para evitarlo hay que cuidar la carga y el balance de las celdas; el buzzer avisa cuando la batería está baja.
 
 ### +5V_SERVO (U22)
 

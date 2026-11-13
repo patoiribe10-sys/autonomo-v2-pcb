@@ -38,7 +38,7 @@ Q7 es un MOSFET canal P con la compuerta a GND a través de 10 kΩ. Con la bater
 
 ### Dos fuentes para los 3.3 V
 
-El regulador U2 se alimenta de la red `5V_LOGIC`, a la que llegan dos diodos Schottky: D1 desde los 5 V de la placa y D2 desde el VBUS del USB. Gracias a eso el ESP32 se puede programar con solo el cable USB, sin batería. Los diodos impiden que una fuente alimente a la otra.
+El regulador U2 se alimenta de la red `5V_LOGIC`. A esa red llegan dos diodos Schottky: D1 desde los 5 V de la placa y D2 desde el VBUS del USB. Con eso el ESP32 se puede programar con puro cable USB, sin batería, y ninguna fuente alimenta a la otra.
 
 ### Voltaje de salida de los reguladores
 
@@ -50,7 +50,7 @@ Los tres conmutados fijan su salida con un divisor resistivo:
 | U21 (TPS54560B) | 0.8 V | R19 115 kΩ / R20 10 kΩ | 10.0 V |
 | U22 (TPS54560B) | 0.8 V | R23 54.9 kΩ / R24 10 kΩ | 5.19 V |
 
-U21 y U22 trabajan a 500 kHz, fijados con resistencias de 200 kΩ en el pin RT. La compensación (8.2 kΩ, 4.7 nF y 82 pF) se calculó con las ecuaciones de la hoja de datos para un cruce de unos 30 kHz. Es un cálculo y no una medición: si al probar la placa el riel oscila, la resistencia a ajustar es R22 (o R26 en el del servo).
+U21 y U22 trabajan a 500 kHz, fijados con resistencias de 200 kΩ en el pin RT. La compensación (8.2 kΩ, 4.7 nF y 82 pF) se calculó con las ecuaciones de la hoja de datos para un cruce de unos 30 kHz. Falta comprobarlo con la placa. Si al probarla el riel oscila, la resistencia que hay que ajustar es R22 (R26 en el del servo).
 
 ### Auto-reset
 
