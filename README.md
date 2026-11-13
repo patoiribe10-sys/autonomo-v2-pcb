@@ -34,6 +34,7 @@ La placa recibe una batería LiPo 3S y saca de ahí cuatro voltajes: 10 V para u
 | `hardware/` | Esquemático en PDF, Gerbers, BOM, CPL, plano mecánico y proyecto de Altium |
 | `firmware/prueba-pcb/` | Firmware de prueba (PlatformIO) |
 | `assets/` | Imágenes y archivos del sitio |
+| `reporte/` | Reporte técnico en PDF |
 
 ## Cómo actualizar la documentación
 

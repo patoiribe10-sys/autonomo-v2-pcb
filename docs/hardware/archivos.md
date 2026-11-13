@@ -8,6 +8,7 @@ Todo lo necesario para revisar, fabricar o modificar la placa está en la carpet
 |---|---|
 | [Autonomo_V2_esquematico.pdf](../../hardware/Autonomo_V2_esquematico.pdf) | Esquemático completo, vectorial y con búsqueda |
 | [Plano_PCB_Autonomo_V2_soporte.pdf](../../hardware/Plano_PCB_Autonomo_V2_soporte.pdf) | Plano acotado de la placa y sus barrenos |
+| [Reporte_PCB_Autonomo_V2.pdf](../../reporte/Reporte_PCB_Autonomo_V2.pdf) | Reporte técnico completo del proyecto |
 | [PCB_Autonomo_V2_agujeros_M3.dxf](../../hardware/PCB_Autonomo_V2_agujeros_M3.dxf) | Contorno y barrenos M3 para diseñar el soporte en CAD |
 
 ## Fabricación
