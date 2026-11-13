@@ -34,7 +34,6 @@ La placa recibe una batería LiPo 3S, genera 10 V para una Jetson Orin Nano, 5 V
 | `hardware/` | Esquemático en PDF, Gerbers, BOM, CPL, plano mecánico y proyecto de Altium |
 | `firmware/prueba-pcb/` | Firmware de prueba (PlatformIO) |
 | `assets/` | Imágenes y archivos del sitio |
-| `reporte/` | Reporte formal y presentación |
 
 ## Ver el sitio en tu computadora
 

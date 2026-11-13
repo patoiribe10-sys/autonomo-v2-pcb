@@ -43,7 +43,6 @@ Las dos plataformas hacen lo mismo para este fin. Se eligió GitHub porque el eq
 | `hardware/` | Esquemático, Gerbers, BOM, plano y proyecto de Altium |
 | `firmware/` | Firmware de prueba |
 | `assets/` | Imágenes, estilos y el script del sitio |
-| `reporte/` | Reporte formal y presentación |
 | `index.html` | Página que arma el sitio a partir de `docs/` |
 
 ## Recomendaciones para mantenerla
