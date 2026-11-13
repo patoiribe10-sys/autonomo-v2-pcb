@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 770" width="1180" height="770" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif">
+<defs><marker id="ae" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b3037"/></marker>
+<marker id="as" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10,0 L0,5 L10,10 z" fill="#2b3037"/></marker></defs>
+<rect width="1180" height="770" fill="#ffffff"/>
+<rect x="30" y="40" width="170" height="80" rx="8" fill="#fdf3d3" stroke="#c9971a" stroke-width="2"/>
+<text x="115.0" y="63.0" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Batería LiPo 3S</text>
+<text x="115.0" y="82.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">11.1 V nominal</text>
+<text x="115.0" y="99.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">P1 XT60</text>
+<rect x="240" y="40" width="130" height="80" rx="8" fill="#fde8e4" stroke="#c8432b" stroke-width="2"/>
+<text x="305.0" y="71.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">F1</text>
+<text x="305.0" y="90.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">fusible 10 A</text>
+<rect x="410" y="40" width="150" height="80" rx="8" fill="#ffffff" stroke="#9aa3ad" stroke-width="2"/>
+<text x="485.0" y="63.0" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">P2</text>
+<text x="485.0" y="82.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">lazo del</text>
+<text x="485.0" y="99.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">interruptor</text>
+<rect x="600" y="40" width="170" height="80" rx="8" fill="#fde8e4" stroke="#c8432b" stroke-width="2"/>
+<text x="685.0" y="63.0" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Q7 AO4407A</text>
+<text x="685.0" y="82.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">anti-inversión</text>
+<text x="685.0" y="99.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">(MOSFET P)</text>
+<rect x="810" y="40" width="150" height="80" rx="8" fill="#fde8e4" stroke="#c8432b" stroke-width="2"/>
+<text x="885.0" y="71.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">D12 SMBJ15A</text>
+<text x="885.0" y="90.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">TVS contra picos</text>
+<rect x="1000" y="40" width="150" height="80" rx="8" fill="#ffffff" stroke="#9aa3ad" stroke-width="2"/>
+<text x="1075.0" y="71.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">C1</text>
+<text x="1075.0" y="90.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">470 µF · 50 V</text>
+<polyline points="200,80 240,80" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
+<polyline points="370,80 410,80" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
+<polyline points="560,80 600,80" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
+<text x="580" y="70" text-anchor="middle" font-size="12.5" fill="#5b6470" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="4">VBAT_SW</text>
+<line x1="60" y1="190" x2="1140" y2="190" stroke="#c9971a" stroke-width="6" stroke-linecap="round"/>
+<text x="60" y="178" text-anchor="start" font-size="14" fill="#8a6a10" font-weight="700">VBAT · 9.0 – 12.6 V</text>
+<polyline points="685,120 685,187" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
+<polyline points="885,120 885,187" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)" marker-start="url(#as)"/>
+<polyline points="1075,120 1075,187" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)" marker-start="url(#as)"/>
+<rect x="40" y="260" width="180" height="90" rx="8" fill="#eef2f6" stroke="#7c8794" stroke-width="2"/>
+<text x="130.0" y="288.0" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">U1 TPS565201</text>
+<text x="130.0" y="307.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">buck síncrono</text>
+<text x="130.0" y="324.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">5 V lógica</text>
+<rect x="280" y="260" width="180" height="90" rx="8" fill="#eef2f6" stroke="#7c8794" stroke-width="2"/>
+<text x="370.0" y="288.0" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">U21 TPS54560B</text>
+<text x="370.0" y="307.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">buck 500 kHz</text>
+<text x="370.0" y="324.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">10 V · L2 4.7 µH</text>
+<rect x="520" y="260" width="180" height="90" rx="8" fill="#eef2f6" stroke="#7c8794" stroke-width="2"/>
+<text x="610.0" y="288.0" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">U22 TPS54560B</text>
+<text x="610.0" y="307.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">buck 500 kHz</text>
+<text x="610.0" y="324.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">5 V servo · L3</text>
+<rect x="760" y="260" width="180" height="90" rx="8" fill="#fde8e4" stroke="#c8432b" stroke-width="2"/>
+<text x="850.0" y="288.0" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Q8 AO4407A</text>
+<text x="850.0" y="307.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">corte por paro</text>
+<text x="850.0" y="324.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">de emergencia</text>
+<rect x="980" y="260" width="170" height="90" rx="8" fill="#eef2f6" stroke="#7c8794" stroke-width="2"/>
+<text x="1065.0" y="288.0" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Q6 AO3400A</text>
+<text x="1065.0" y="307.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">interruptor</text>
+<text x="1065.0" y="324.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">de luces</text>
+<polyline points="130,193 130,260" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
+<polyline points="370,193 370,260" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
+<polyline points="610,193 610,260" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
+<polyline points="850,193 850,260" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
+<polyline points="1060,193 1060,260" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
+<rect x="40" y="420" width="180" height="70" rx="8" fill="#fdf3d3" stroke="#c9971a" stroke-width="2"/>
+<text x="130.0" y="438.0" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">+5V</text>
+<text x="130.0" y="457.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">lógica · TP8</text>
+<text x="130.0" y="474.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">U23, buzzer, tira LED</text>
+<rect x="280" y="420" width="180" height="70" rx="8" fill="#fdf3d3" stroke="#c9971a" stroke-width="2"/>
+<text x="370.0" y="446.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">+VJET 10 V</text>
+<text x="370.0" y="465.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">J5 · TP11</text>
+<rect x="520" y="420" width="180" height="70" rx="8" fill="#fdf3d3" stroke="#c9971a" stroke-width="2"/>
+<text x="610.0" y="446.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">+5V_SERVO</text>
+<text x="610.0" y="465.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">J3 · C21 1000 µF</text>
+<rect x="760" y="420" width="180" height="70" rx="8" fill="#fdf3d3" stroke="#c9971a" stroke-width="2"/>
+<text x="850.0" y="446.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">VBAT_MOT</text>
+<text x="850.0" y="465.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">solo con lazo J10 cerrado</text>
+<rect x="980" y="420" width="170" height="70" rx="8" fill="#e6f4ea" stroke="#3c8d5a" stroke-width="2"/>
+<text x="1065.0" y="446.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Luces</text>
+<text x="1065.0" y="465.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">J9 a voltaje de batería</text>
+<polyline points="130,350 130,420" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
+<polyline points="370,350 370,420" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
+<polyline points="610,350 610,420" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
+<polyline points="850,350 850,420" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
+<polyline points="1060,350 1060,420" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
+<rect x="280" y="560" width="180" height="70" rx="8" fill="#e6f4ea" stroke="#3c8d5a" stroke-width="2"/>
+<text x="370.0" y="586.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Jetson Orin Nano</text>
+<text x="370.0" y="605.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">hasta 25 W (≈2.5 A)</text>
+<rect x="520" y="560" width="180" height="70" rx="8" fill="#e6f4ea" stroke="#3c8d5a" stroke-width="2"/>
+<text x="610.0" y="586.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Servo MG995</text>
+<text x="610.0" y="605.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">picos de 2.5 – 3 A</text>
+<rect x="760" y="560" width="180" height="70" rx="8" fill="#e6f4ea" stroke="#3c8d5a" stroke-width="2"/>
+<text x="850.0" y="586.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">TB6612 → motor</text>
+<text x="850.0" y="605.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">VM del puente H</text>
+<polyline points="370,490 370,560" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
+<polyline points="610,490 610,560" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
+<polyline points="850,490 850,560" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
+<rect x="40" y="560" width="180" height="70" rx="8" fill="#eef2f6" stroke="#7c8794" stroke-width="2"/>
+<text x="130.0" y="586.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">U2 AP2112K</text>
+<text x="130.0" y="605.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">LDO 3.3 V · 600 mA</text>
+<polyline points="100,490 100,560" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
+<text x="92" y="530" text-anchor="end" font-size="12.5" fill="#5b6470" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="4">D1</text>
+<rect x="40" y="690" width="180" height="55" rx="8" fill="#e6eefb" stroke="#3f6fc4" stroke-width="2"/>
+<text x="130.0" y="709.0" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">USB-C VBUS</text>
+<text x="130.0" y="728.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">5 V del cable</text>
+<polyline points="160,690 160,630" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
+<text x="168" y="665" text-anchor="start" font-size="12.5" fill="#5b6470" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="4">D2</text>
+<text x="240" y="712" text-anchor="start" font-size="13.5" fill="#14171c" font-weight="400">+3V3 → ESP32, CH340C, lógica del TB6612, encoder e I2C</text>
+<text x="240" y="732" text-anchor="start" font-size="12.5" fill="#5b6470" font-weight="400">D1 y D2 (SS14) eligen la fuente: batería o cable USB.</text>
+</svg>
