@@ -45,7 +45,7 @@ En la Figura 1 se ve el rectángulo sin cobre de la parte de arriba, igual en la
 - **Conectores en la orilla,** con el nombre de su función en la serigrafía ("MOTOR + ENCODER", "SERIAL JETSON") para que cualquiera del equipo pueda conectar el carro sin abrir el esquemático.
 - **Pasivos alineados** con el pin que atienden, en cuadrícula.
 
-![Vista 3D](../../assets/img/pcb-3d.jpg "Figura 2. Vista 3D con la máscara negra. Al frente, el XT60 y el capacitor de entrada.")
+![Vista superior del modelo 3D](../../assets/img/pcb-vista-superior.png "Figura 2. Vista superior del modelo 3D con la máscara negra. Abajo a la izquierda, el XT60 y el capacitor de entrada.")
 
 ## Reglas de diseño
 

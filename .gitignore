@@ -1,0 +1,14 @@
+# PlatformIO
+.pio/
+.vscode/
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+# Altium (si alguien descomprime el proyecto aquí)
+History/
+__Previews/
+Project Logs*/
+*.PrjPcbStructure
+# Herramientas de revisión
+.repodoc/

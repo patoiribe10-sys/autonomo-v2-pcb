@@ -1,128 +1,175 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 760" width="1180" height="760" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif">
-<defs><marker id="ae" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b3037"/></marker>
-<marker id="as" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10,0 L0,5 L10,10 z" fill="#2b3037"/></marker></defs>
-<rect width="1180" height="760" fill="#ffffff"/>
-<rect x="210" y="20" width="760" height="720" rx="12" fill="#fafbfc" stroke="#c9971a" stroke-width="2" stroke-dasharray="8 6"/>
-<text x="224" y="44" font-size="14" font-weight="700" fill="#8a6a10">PCB Autonomo_V2</text>
-<rect x="470" y="250" width="240" height="230" rx="8" fill="#14171c" stroke="#c9971a" stroke-width="2"/>
-<text x="590.0" y="348.0" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff">ESP32-WROOM-32E</text>
-<text x="590.0" y="367.0" text-anchor="middle" font-size="13" fill="#ffffff" opacity=".8">U3 · 4 MB flash</text>
-<text x="590.0" y="384.0" text-anchor="middle" font-size="13" fill="#ffffff" opacity=".8">Wi-Fi + Bluetooth</text>
-<rect x="20" y="60" width="150" height="60" rx="8" fill="#e6eefb" stroke="#3f6fc4" stroke-width="2"/>
-<text x="95.0" y="81.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">PC</text>
-<text x="95.0" y="100.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">USB-C</text>
-<rect x="240" y="60" width="170" height="60" rx="8" fill="#eef2f6" stroke="#7c8794" stroke-width="2"/>
-<text x="325.0" y="81.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">J1 + U24</text>
-<text x="325.0" y="100.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">USB-C · ESD</text>
-<rect x="240" y="150" width="170" height="60" rx="8" fill="#eef2f6" stroke="#7c8794" stroke-width="2"/>
-<text x="325.0" y="171.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">U4 CH340C</text>
-<text x="325.0" y="190.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">USB a UART</text>
-<rect x="470" y="60" width="240" height="60" rx="8" fill="#eef2f6" stroke="#7c8794" stroke-width="2"/>
-<text x="590.0" y="81.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Q1/Q2 + JP1</text>
-<text x="590.0" y="100.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">auto-reset (EN, IO0)</text>
-<rect x="470" y="150" width="240" height="60" rx="8" fill="#eef2f6" stroke="#7c8794" stroke-width="2"/>
-<text x="590.0" y="171.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">S1 EN · S2 BOOT</text>
-<text x="590.0" y="190.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">botones</text>
-<polyline points="170,90 240,90" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)" marker-start="url(#as)"/>
-<polyline points="325,120 325,150" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)" marker-start="url(#as)"/>
-<polyline points="410,180 440,180 440,290 470,290" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)" marker-start="url(#as)"/>
-<text x="446" y="235" text-anchor="start" font-size="12.5" fill="#5b6470" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="4">UART0</text>
-<polyline points="410,165 440,165 440,90 470,90" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
-<text x="404" y="140" text-anchor="end" font-size="12.5" fill="#5b6470" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="4">DTR/RTS</text>
-<polyline points="590,120 590,150" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
-<polyline points="590,210 590,250" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
-<rect x="20" y="300" width="150" height="70" rx="8" fill="#e6eefb" stroke="#3f6fc4" stroke-width="2"/>
-<text x="95.0" y="326.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Jetson</text>
-<text x="95.0" y="345.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">Orin Nano</text>
-<rect x="240" y="300" width="170" height="70" rx="8" fill="#eef2f6" stroke="#7c8794" stroke-width="2"/>
-<text x="325.0" y="318.0" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">J4 · R17/R18</text>
-<text x="325.0" y="337.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">serial Jetson</text>
-<text x="325.0" y="354.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">330 Ω en serie</text>
-<polyline points="170,335 240,335" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)" marker-start="url(#as)"/>
-<polyline points="410,335 470,335" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)" marker-start="url(#as)"/>
-<text x="440" y="327" text-anchor="middle" font-size="12.5" fill="#5b6470" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="4">UART2</text>
-<rect x="20" y="410" width="150" height="70" rx="8" fill="#fde8e4" stroke="#c8432b" stroke-width="2"/>
-<text x="95.0" y="436.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">START · paro</text>
-<text x="95.0" y="455.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">botón y lazo NC</text>
-<rect x="240" y="410" width="170" height="70" rx="8" fill="#eef2f6" stroke="#7c8794" stroke-width="2"/>
-<text x="325.0" y="428.0" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">J10 · S3</text>
-<text x="325.0" y="447.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">START (IO27)</text>
-<text x="325.0" y="464.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">ESTOP (ADC IO39)</text>
-<polyline points="170,445 240,445" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
-<polyline points="410,445 440,445 440,400 470,400" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
-<rect x="20" y="520" width="150" height="70" rx="8" fill="#e6eefb" stroke="#3f6fc4" stroke-width="2"/>
-<text x="95.0" y="546.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Sensores</text>
-<text x="95.0" y="565.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">I2C</text>
-<rect x="240" y="520" width="170" height="70" rx="8" fill="#eef2f6" stroke="#7c8794" stroke-width="2"/>
-<text x="325.0" y="538.0" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">J11 · J12</text>
-<text x="325.0" y="557.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">I2C IO32/IO33</text>
-<text x="325.0" y="574.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">pull-up 4.7 kΩ</text>
-<polyline points="170,555 240,555" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)" marker-start="url(#as)"/>
-<polyline points="410,555 450,555 450,440 470,440" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)" marker-start="url(#as)"/>
-<rect x="240" y="630" width="170" height="70" rx="8" fill="#fdf3d3" stroke="#c9971a" stroke-width="2"/>
-<text x="325.0" y="648.0" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Divisor R1/R2</text>
-<text x="325.0" y="667.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">VBAT_SENSE (IO36)</text>
-<text x="325.0" y="684.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">100 k / 22 k</text>
-<polyline points="410,665 520,665 520,480" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
-<text x="460" y="657" text-anchor="middle" font-size="12.5" fill="#5b6470" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="4">batería</text>
-<rect x="770" y="60" width="170" height="70" rx="8" fill="#eef2f6" stroke="#7c8794" stroke-width="2"/>
-<text x="855.0" y="78.0" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">U5 TB6612FNG</text>
-<text x="855.0" y="97.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">puente H</text>
-<text x="855.0" y="114.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">canales A‖B</text>
-<rect x="1010" y="60" width="150" height="70" rx="8" fill="#e6f4ea" stroke="#3c8d5a" stroke-width="2"/>
-<text x="1085.0" y="86.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Motor</text>
-<text x="1085.0" y="105.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">GM25-370</text>
-<polyline points="710,280 740,280 740,95 770,95" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
-<text x="746" y="154" text-anchor="start" font-size="12.5" fill="#5b6470" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="4">IN1 IN2 PWM STBY</text>
-<polyline points="940,95 1010,95" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
-<text x="975" y="86" text-anchor="middle" font-size="12.5" fill="#5b6470" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="4">J2</text>
-<rect x="770" y="170" width="170" height="60" rx="8" fill="#eef2f6" stroke="#7c8794" stroke-width="2"/>
-<text x="855.0" y="191.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Encoder A/B</text>
-<text x="855.0" y="210.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">J2 · pull-up 10 k</text>
-<rect x="1010" y="170" width="150" height="60" rx="8" fill="#e6f4ea" stroke="#3c8d5a" stroke-width="2"/>
-<text x="1085.0" y="191.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Encoder</text>
-<text x="1085.0" y="210.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">cuadratura</text>
-<polyline points="1010,200 940,200" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
-<polyline points="770,200 750,200 750,310 710,310" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
-<text x="756" y="255" text-anchor="start" font-size="12.5" fill="#5b6470" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="4">IO34/35</text>
-<rect x="770" y="290" width="170" height="80" rx="8" fill="#eef2f6" stroke="#7c8794" stroke-width="2"/>
-<text x="855.0" y="321.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">U23 74AHCT125</text>
-<text x="855.0" y="340.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">buffer 3.3 → 5 V</text>
-<polyline points="710,345 770,345" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
-<text x="740" y="326" text-anchor="middle" font-size="12.5" fill="#5b6470" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="4">IO25</text>
-<text x="740" y="341" text-anchor="middle" font-size="12.5" fill="#5b6470" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="4">IO26</text>
-<rect x="1010" y="270" width="150" height="50" rx="8" fill="#e6f4ea" stroke="#3c8d5a" stroke-width="2"/>
-<text x="1085.0" y="286.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Servo</text>
-<text x="1085.0" y="305.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">J3 · 5 V propio</text>
-<rect x="1010" y="340" width="150" height="50" rx="8" fill="#e6f4ea" stroke="#3c8d5a" stroke-width="2"/>
-<text x="1085.0" y="356.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Tira LED</text>
-<text x="1085.0" y="375.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">J7 · WS2812</text>
-<polyline points="940,310 975,310 975,295 1010,295" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
-<polyline points="940,350 975,350 975,365 1010,365" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
-<rect x="770" y="420" width="170" height="60" rx="8" fill="#eef2f6" stroke="#7c8794" stroke-width="2"/>
-<text x="855.0" y="441.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Q5 MMBT3904</text>
-<text x="855.0" y="460.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">IO13</text>
-<rect x="1010" y="420" width="150" height="60" rx="8" fill="#e6f4ea" stroke="#3c8d5a" stroke-width="2"/>
-<text x="1085.0" y="441.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Buzzer</text>
-<text x="1085.0" y="460.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">J8 · 5 V</text>
-<polyline points="710,440 770,440" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
-<polyline points="940,450 1010,450" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
-<rect x="770" y="520" width="170" height="60" rx="8" fill="#eef2f6" stroke="#7c8794" stroke-width="2"/>
-<text x="855.0" y="541.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Q6 AO3400A</text>
-<text x="855.0" y="560.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">IO14</text>
-<rect x="1010" y="520" width="150" height="60" rx="8" fill="#e6f4ea" stroke="#3c8d5a" stroke-width="2"/>
-<text x="1085.0" y="541.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Luces</text>
-<text x="1085.0" y="560.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">J9 · VBAT</text>
-<polyline points="710,465 740,465 740,550 770,550" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
-<polyline points="940,550 1010,550" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
-<rect x="770" y="630" width="170" height="70" rx="8" fill="#fde8e4" stroke="#c8432b" stroke-width="2"/>
-<text x="855.0" y="648.0" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">Q8 AO4407A</text>
-<text x="855.0" y="667.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">corte de VBAT_MOT</text>
-<text x="855.0" y="684.0" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">por paro de emergencia</text>
-<polyline points="855,630 855,600 955,600 955,147 900,147 900,132" fill="none" stroke="#2b3037" stroke-width="2.2" stroke-dasharray="6 5" marker-end="url(#ae)"/>
-<text x="962" y="405" text-anchor="start" font-size="12.5" fill="#5b6470" font-weight="600" paint-order="stroke" stroke="#fff" stroke-width="4">VBAT_MOT</text>
-<rect x="590" y="630" width="150" height="70" rx="8" fill="#eef2f6" stroke="#7c8794" stroke-width="2"/>
-<text x="665.0" y="656.5" text-anchor="middle" font-size="17" font-weight="700" fill="#14171c">D5 heartbeat</text>
-<text x="665.0" y="675.5" text-anchor="middle" font-size="13" fill="#14171c" opacity=".8">IO2 · LED verde</text>
-<polyline points="665,480 665,630" fill="none" stroke="#2b3037" stroke-width="2.2" marker-end="url(#ae)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 1012" width="1180" height="1012" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif">
+<defs><marker id="ep" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#e8590c"/></marker><marker id="sp" viewBox="0 0 10 10" refX="1.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M10,0 L0,5 L10,10 z" fill="#e8590c"/></marker><marker id="ed" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1c7ed6"/></marker><marker id="sd" viewBox="0 0 10 10" refX="1.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M10,0 L0,5 L10,10 z" fill="#1c7ed6"/></marker><marker id="ec" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1b1b1f"/></marker><marker id="sc" viewBox="0 0 10 10" refX="1.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M10,0 L0,5 L10,10 z" fill="#1b1b1f"/></marker><marker id="es" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c92a2a"/></marker><marker id="ss" viewBox="0 0 10 10" refX="1.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M10,0 L0,5 L10,10 z" fill="#c92a2a"/></marker></defs>
+<rect width="1180" height="1012" fill="#ffffff"/>
+<rect x="40" y="26" width="10" height="46" rx="3" fill="#12b886"/>
+<text x="66" y="52" font-size="30" font-weight="800" fill="#1b1b1f">Funcionamiento del sistema</text>
+<text x="66" y="74" font-size="15" font-weight="500" fill="#3d4450">Bloques de la placa y el camino de una orden, de la Jetson a la llanta</text>
+<text x="1140" y="52" text-anchor="end" font-size="14" font-weight="700" fill="#3d4450">PCB Autonomo_V2 · RoboUAQ</text>
+<g transform="translate(0,96)">
+<rect x="210" y="20" width="760" height="720" rx="16" fill="#fff9db" stroke="#1b1b1f" stroke-width="2.4" stroke-dasharray="10 7"/><rect x="228" y="5" width="178" height="30" rx="15" fill="#1b1b1f"/><text x="242" y="25" font-size="15" font-weight="800" fill="#ffd43b">PCB Autonomo_V2</text>
+<rect x="475" y="255" width="240" height="230" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="470" y="250" width="240" height="230" rx="10" fill="#1b1b1f" stroke="#1b1b1f" stroke-width="2.4"/>
+<rect x="476" y="256" width="228" height="218" rx="6" fill="none" stroke="#ffd43b" stroke-width="2" stroke-dasharray="2 6" stroke-linecap="round"/>
+<text x="590.0" y="348.0" text-anchor="middle" font-size="19" font-weight="800" fill="#ffffff">ESP32-WROOM-32E</text>
+<text x="590.0" y="367.0" text-anchor="middle" font-size="13" font-weight="500" fill="#ffffff" opacity=".85">U3 · 4 MB flash</text>
+<text x="590.0" y="384.0" text-anchor="middle" font-size="13" font-weight="500" fill="#ffffff" opacity=".85">Wi-Fi + Bluetooth</text>
+<rect x="25" y="65" width="150" height="60" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="20" y="60" width="150" height="60" rx="10" fill="#bac8ff" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="95.0" y="81.5" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">PC</text>
+<text x="95.0" y="100.5" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">USB-C</text>
+<rect x="245" y="65" width="170" height="60" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="240" y="60" width="170" height="60" rx="10" fill="#d0ebff" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="325.0" y="81.5" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">J1 + U24</text>
+<text x="325.0" y="100.5" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">USB-C · ESD</text>
+<rect x="245" y="155" width="170" height="60" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="240" y="150" width="170" height="60" rx="10" fill="#d0ebff" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="325.0" y="171.5" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">U4 CH340C</text>
+<text x="325.0" y="190.5" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">USB a UART</text>
+<rect x="475" y="65" width="240" height="60" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="470" y="60" width="240" height="60" rx="10" fill="#d0ebff" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="590.0" y="81.5" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">Q1/Q2 + JP1</text>
+<text x="590.0" y="100.5" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">auto-reset (EN, IO0)</text>
+<rect x="475" y="155" width="240" height="60" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="470" y="150" width="240" height="60" rx="10" fill="#d0ebff" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="590.0" y="171.5" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">S1 EN · S2 BOOT</text>
+<text x="590.0" y="190.5" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">botones</text>
+<polyline points="170,90 240,90" fill="none" stroke="#1c7ed6" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ed)" marker-start="url(#sd)"/>
+<polyline points="325,120 325,150" fill="none" stroke="#1c7ed6" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ed)" marker-start="url(#sd)"/>
+<polyline points="410,180 440,180 440,290 470,290" fill="none" stroke="#1c7ed6" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ed)" marker-start="url(#sd)"/>
+<polyline points="410,165 440,165 440,90 470,90" fill="none" stroke="#1b1b1f" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ec)"/>
+<polyline points="590,120 590,150" fill="none" stroke="#1b1b1f" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ec)"/>
+<polyline points="590,210 590,250" fill="none" stroke="#1b1b1f" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ec)"/>
+<rect x="25" y="305" width="150" height="70" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="20" y="300" width="150" height="70" rx="10" fill="#bac8ff" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="95.0" y="326.5" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">Jetson</text>
+<text x="95.0" y="345.5" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">Orin Nano</text>
+<rect x="245" y="305" width="170" height="70" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="240" y="300" width="170" height="70" rx="10" fill="#d0ebff" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="325.0" y="318.0" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">J4 · R17/R18</text>
+<text x="325.0" y="337.0" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">serial Jetson</text>
+<text x="325.0" y="354.0" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">330 Ω en serie</text>
+<polyline points="170,335 240,335" fill="none" stroke="#1c7ed6" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ed)" marker-start="url(#sd)"/>
+<polyline points="410,335 470,335" fill="none" stroke="#1c7ed6" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ed)" marker-start="url(#sd)"/>
+<rect x="25" y="415" width="150" height="70" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="20" y="410" width="150" height="70" rx="10" fill="#ffa8a8" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="95.0" y="436.5" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">START · paro</text>
+<text x="95.0" y="455.5" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">botón y lazo NC</text>
+<rect x="245" y="415" width="170" height="70" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="240" y="410" width="170" height="70" rx="10" fill="#d0ebff" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="325.0" y="428.0" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">J10 · S3</text>
+<text x="325.0" y="447.0" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">START (IO27)</text>
+<text x="325.0" y="464.0" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">ESTOP (ADC IO39)</text>
+<polyline points="170,445 240,445" fill="none" stroke="#c92a2a" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#es)"/>
+<polyline points="410,445 440,445 440,400 470,400" fill="none" stroke="#c92a2a" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#es)"/>
+<rect x="25" y="525" width="150" height="70" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="20" y="520" width="150" height="70" rx="10" fill="#bac8ff" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="95.0" y="546.5" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">Sensores</text>
+<text x="95.0" y="565.5" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">I2C</text>
+<rect x="245" y="525" width="170" height="70" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="240" y="520" width="170" height="70" rx="10" fill="#d0ebff" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="325.0" y="538.0" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">J11 · J12</text>
+<text x="325.0" y="557.0" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">I2C IO32/IO33</text>
+<text x="325.0" y="574.0" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">pull-up 4.7 kΩ</text>
+<polyline points="170,555 240,555" fill="none" stroke="#1c7ed6" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ed)" marker-start="url(#sd)"/>
+<polyline points="410,555 450,555 450,440 470,440" fill="none" stroke="#1c7ed6" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ed)" marker-start="url(#sd)"/>
+<rect x="245" y="635" width="170" height="70" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="240" y="630" width="170" height="70" rx="10" fill="#ffd43b" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="325.0" y="648.0" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">Divisor R1/R2</text>
+<text x="325.0" y="667.0" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">VBAT_SENSE (IO36)</text>
+<text x="325.0" y="684.0" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">100 k / 22 k</text>
+<polyline points="410,665 520,665 520,480" fill="none" stroke="#e8590c" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ep)"/>
+<rect x="775" y="65" width="170" height="70" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="770" y="60" width="170" height="70" rx="10" fill="#d0ebff" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="855.0" y="78.0" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">U5 TB6612FNG</text>
+<text x="855.0" y="97.0" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">puente H</text>
+<text x="855.0" y="114.0" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">canales A‖B</text>
+<rect x="1015" y="65" width="150" height="70" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="1010" y="60" width="150" height="70" rx="10" fill="#b2f2bb" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="1085.0" y="86.5" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">Motor</text>
+<text x="1085.0" y="105.5" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">GM25-370</text>
+<polyline points="710,280 740,280 740,95 770,95" fill="none" stroke="#1b1b1f" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ec)"/>
+<polyline points="940,95 1010,95" fill="none" stroke="#e8590c" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ep)"/>
+<rect x="775" y="175" width="170" height="60" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="770" y="170" width="170" height="60" rx="10" fill="#d0ebff" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="855.0" y="191.5" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">Encoder A/B</text>
+<text x="855.0" y="210.5" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">J2 · pull-up 10 k</text>
+<rect x="1015" y="175" width="150" height="60" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="1010" y="170" width="150" height="60" rx="10" fill="#b2f2bb" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="1085.0" y="191.5" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">Encoder</text>
+<text x="1085.0" y="210.5" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">cuadratura</text>
+<polyline points="1010,200 940,200" fill="none" stroke="#1c7ed6" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ed)"/>
+<polyline points="770,200 750,200 750,310 710,310" fill="none" stroke="#1c7ed6" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ed)"/>
+<rect x="775" y="295" width="170" height="80" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="770" y="290" width="170" height="80" rx="10" fill="#d0ebff" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="855.0" y="321.5" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">U23 74AHCT125</text>
+<text x="855.0" y="340.5" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">buffer 3.3 → 5 V</text>
+<polyline points="710,345 770,345" fill="none" stroke="#1b1b1f" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ec)"/>
+<rect x="1015" y="275" width="150" height="50" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="1010" y="270" width="150" height="50" rx="10" fill="#b2f2bb" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="1085.0" y="286.5" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">Servo</text>
+<text x="1085.0" y="305.5" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">J3 · 5 V propio</text>
+<rect x="1015" y="345" width="150" height="50" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="1010" y="340" width="150" height="50" rx="10" fill="#b2f2bb" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="1085.0" y="356.5" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">Tira LED</text>
+<text x="1085.0" y="375.5" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">J7 · WS2812</text>
+<polyline points="940,310 975,310 975,295 1010,295" fill="none" stroke="#1b1b1f" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ec)"/>
+<polyline points="940,350 975,350 975,365 1010,365" fill="none" stroke="#1b1b1f" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ec)"/>
+<rect x="775" y="425" width="170" height="60" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="770" y="420" width="170" height="60" rx="10" fill="#d0ebff" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="855.0" y="441.5" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">Q5 MMBT3904</text>
+<text x="855.0" y="460.5" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">IO13</text>
+<rect x="1015" y="425" width="150" height="60" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="1010" y="420" width="150" height="60" rx="10" fill="#b2f2bb" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="1085.0" y="441.5" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">Buzzer</text>
+<text x="1085.0" y="460.5" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">J8 · 5 V</text>
+<polyline points="710,440 770,440" fill="none" stroke="#1b1b1f" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ec)"/>
+<polyline points="940,450 1010,450" fill="none" stroke="#1b1b1f" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ec)"/>
+<rect x="775" y="525" width="170" height="60" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="770" y="520" width="170" height="60" rx="10" fill="#d0ebff" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="855.0" y="541.5" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">Q6 AO3400A</text>
+<text x="855.0" y="560.5" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">IO14</text>
+<rect x="1015" y="525" width="150" height="60" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="1010" y="520" width="150" height="60" rx="10" fill="#b2f2bb" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="1085.0" y="541.5" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">Luces</text>
+<text x="1085.0" y="560.5" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">J9 · VBAT</text>
+<polyline points="710,465 740,465 740,550 770,550" fill="none" stroke="#1b1b1f" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ec)"/>
+<polyline points="940,550 1010,550" fill="none" stroke="#1b1b1f" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ec)"/>
+<rect x="775" y="635" width="170" height="70" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="770" y="630" width="170" height="70" rx="10" fill="#ffa8a8" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="855.0" y="648.0" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">Q8 AO4407A</text>
+<text x="855.0" y="667.0" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">corte de VBAT_MOT</text>
+<text x="855.0" y="684.0" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">por paro de emergencia</text>
+<polyline points="855,630 855,600 955,600 955,147 900,147 900,132" fill="none" stroke="#c92a2a" stroke-width="3.4" stroke-linejoin="round" stroke-dasharray="9 7" marker-end="url(#es)"/>
+<rect x="595" y="635" width="150" height="70" rx="10" fill="#1b1b1f" opacity=".18"/>
+<rect x="590" y="630" width="150" height="70" rx="10" fill="#d0ebff" stroke="#1b1b1f" stroke-width="2.4"/>
+<text x="665.0" y="656.5" text-anchor="middle" font-size="17" font-weight="800" fill="#1b1b1f">D5 heartbeat</text>
+<text x="665.0" y="675.5" text-anchor="middle" font-size="13" font-weight="500" fill="#1b1b1f" opacity=".85">IO2 · LED verde</text>
+<polyline points="665,480 665,630" fill="none" stroke="#1b1b1f" stroke-width="3.4" stroke-linejoin="round" marker-end="url(#ec)"/>
+<text x="448" y="235" text-anchor="start" font-size="12.5" fill="#3d4450" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="5">UART0</text>
+<text x="404" y="140" text-anchor="end" font-size="12.5" fill="#3d4450" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="5">DTR/RTS</text>
+<circle cx="205" cy="335" r="15" fill="#1c7ed6" stroke="#fff" stroke-width="3"/><text x="205" y="340.5" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">1</text>
+<text x="440" y="322" text-anchor="middle" font-size="12.5" fill="#3d4450" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="5">UART2</text>
+<text x="465" y="655" text-anchor="middle" font-size="12.5" fill="#3d4450" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="5">batería</text>
+<text x="746" y="154" text-anchor="start" font-size="12.5" fill="#3d4450" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="5">IN1 IN2 PWM STBY</text>
+<circle cx="740" cy="235" r="15" fill="#1b1b1f" stroke="#fff" stroke-width="3"/><text x="740" y="240.5" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">2</text>
+<text x="975" y="84" text-anchor="middle" font-size="12.5" fill="#3d4450" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="5">J2</text>
+<circle cx="975" cy="112" r="15" fill="#e8590c" stroke="#fff" stroke-width="3"/><text x="975" y="117.5" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">3</text>
+<circle cx="975" cy="200" r="15" fill="#1c7ed6" stroke="#fff" stroke-width="3"/><text x="975" y="205.5" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">4</text>
+<text x="756" y="262" text-anchor="start" font-size="12.5" fill="#3d4450" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="5">IO34/35</text>
+<text x="740" y="372" text-anchor="middle" font-size="12.5" fill="#3d4450" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="5">IO25</text>
+<text x="740" y="387" text-anchor="middle" font-size="12.5" fill="#3d4450" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="5">IO26</text>
+<circle cx="740" cy="330" r="15" fill="#1b1b1f" stroke="#fff" stroke-width="3"/><text x="740" y="335.5" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">5</text>
+<text x="962" y="405" text-anchor="start" font-size="12.5" fill="#3d4450" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="5">VBAT_MOT</text>
+<circle cx="955" cy="600" r="15" fill="#c92a2a" stroke="#fff" stroke-width="3"/><text x="955" y="605.5" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">6</text>
+</g>
+<line x1="40" y1="877" x2="84" y2="877" stroke="#1c7ed6" stroke-width="4.5" stroke-linecap="round"/><text x="94" y="882" font-size="14" font-weight="700" fill="#1b1b1f">Datos</text>
+<line x1="179.0" y1="877" x2="223.0" y2="877" stroke="#1b1b1f" stroke-width="4.5" stroke-linecap="round"/><text x="233.0" y="882" font-size="14" font-weight="700" fill="#1b1b1f">Control</text>
+<line x1="334.4" y1="877" x2="378.4" y2="877" stroke="#e8590c" stroke-width="4.5" stroke-linecap="round"/><text x="388.4" y="882" font-size="14" font-weight="700" fill="#1b1b1f">Energía</text>
+<line x1="489.79999999999995" y1="877" x2="533.8" y2="877" stroke="#c92a2a" stroke-width="4.5" stroke-linecap="round"/><text x="543.8" y="882" font-size="14" font-weight="700" fill="#1b1b1f">Seguridad</text>
+<circle cx="51.0" cy="911" r="11" fill="#1b1b1f"/><text x="51.0" y="916" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">1</text><text x="72.0" y="916" font-size="14.5" font-weight="500" fill="#1b1b1f">La orden de la Jetson llega por J4 a UART2</text>
+<circle cx="621.0" cy="911" r="11" fill="#1b1b1f"/><text x="621.0" y="916" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">2</text><text x="642.0" y="916" font-size="14.5" font-weight="500" fill="#1b1b1f">El ESP32 fija sentido (IN1, IN2) y velocidad (PWM)</text>
+<circle cx="51.0" cy="937" r="11" fill="#1b1b1f"/><text x="51.0" y="942" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">3</text><text x="72.0" y="942" font-size="14.5" font-weight="500" fill="#1b1b1f">El puente H conmuta la batería hacia el motor</text>
+<circle cx="621.0" cy="937" r="11" fill="#1b1b1f"/><text x="621.0" y="942" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">4</text><text x="642.0" y="942" font-size="14.5" font-weight="500" fill="#1b1b1f">El encoder regresa el avance real de la llanta</text>
+<circle cx="51.0" cy="963" r="11" fill="#1b1b1f"/><text x="51.0" y="968" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">5</text><text x="72.0" y="968" font-size="14.5" font-weight="500" fill="#1b1b1f">El pulso del servo sube de 3.3 V a 5 V en el buffer</text>
+<circle cx="621.0" cy="963" r="11" fill="#1b1b1f"/><text x="621.0" y="968" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">6</text><text x="642.0" y="968" font-size="14.5" font-weight="500" fill="#1b1b1f">El paro abre Q8 y deja al puente H sin batería</text>
 </svg>

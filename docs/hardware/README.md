@@ -57,7 +57,7 @@ La placa se acomodó siguiendo el camino de la energía. La batería entra por l
 | 28 | U23 | | Buffer de 3.3 V a 5 V |
 | 29 | D5–D9 | HB, 3V3, 5V, SRV, VJET | LEDs indicadores |
 
-![Vista 3D de la placa](../../assets/img/pcb-3d.jpg "Figura 2. Modelo 3D en Altium, visto desde la esquina de la batería.")
+![Vista superior del modelo 3D](../../assets/img/pcb-vista-superior.png "Figura 2. Vista superior del modelo 3D en Altium, con los componentes montados.")
 
 ## Conectores
 

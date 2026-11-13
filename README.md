@@ -4,7 +4,7 @@ Documentación de la placa de control del carro autónomo a escala 1:10 del equi
 
 **Sitio:** https://patoiribe10-sys.github.io/autonomo-v2-pcb/
 
-![Vista superior de la placa](assets/img/pcb-top.png)
+![Vista superior de la placa](assets/img/pcb-vista-superior.png)
 
 La placa recibe una batería LiPo 3S, genera 10 V para una Jetson Orin Nano, 5 V para la lógica, 5 V aparte para el servo y 3.3 V, y lleva un ESP32-WROOM-32E que controla el motor y la dirección. Son 4 capas en 100 × 100 mm, diseñada en Altium Designer y fabricada con ensamblaje en PCBWay.
 
@@ -34,6 +34,13 @@ La placa recibe una batería LiPo 3S, genera 10 V para una Jetson Orin Nano, 5 V
 | `hardware/` | Esquemático en PDF, Gerbers, BOM, CPL, plano mecánico y proyecto de Altium |
 | `firmware/prueba-pcb/` | Firmware de prueba (PlatformIO) |
 | `assets/` | Imágenes y archivos del sitio |
+
+## Cómo actualizar la documentación
+
+1. Edita el archivo `.md` que corresponda en `docs/`. Las rutas a imágenes y archivos son relativas a ese archivo.
+2. Si agregas una página nueva, dala de alta en la lista `NAV` de `assets/js/app.js`.
+3. Los tres diagramas (`assets/img/diagrama-*.svg`) son SVG editables; el PNG de cada uno es el que se muestra.
+4. Sube el cambio a `main`. GitHub Pages publica solo.
 
 ## Ver el sitio en tu computadora
 

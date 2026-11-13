@@ -9,7 +9,7 @@ La Autonomo_V2 es la placa de control del carro autónomo a escala 1:10 con el q
 
 Es la segunda versión. La primera se hizo en KiCad con módulos comerciales (DevKit del ESP32, convertidores XL4016 y Mini560) y se soldó a mano. Esta se diseñó en Altium Designer con todo integrado en la misma placa y se mandó a fabricar ya ensamblada.
 
-![Vista superior de la PCB Autonomo_V2](../assets/img/pcb-top.png "Figura 1. Cara superior de la placa. Todo el montaje va de este lado.")
+![Vista superior de la PCB Autonomo_V2](../assets/img/pcb-vista-superior.png "Figura 1. Vista superior del modelo 3D de la placa. Todo el montaje va de este lado.")
 
 ## Datos generales
 

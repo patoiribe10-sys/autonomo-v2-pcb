@@ -51,4 +51,4 @@ Al pedir una placa de 4 capas hay que indicarle al fabricante el orden: L1 GTL, 
 | Gerbers y barrenos | Fabrication Outputs de Altium, en mm, formato 4:4 |
 | BOM y CPL | Exportados de Altium y acomodados al formato de PCBWay |
 | Imágenes de capas de este sitio | Generadas a partir de los mismos Gerbers que se mandaron a fabricar |
-| Vistas 3D | Capturas del modo 3D de Altium |
+| Vista superior 3D | Captura del modo 3D de Altium |
