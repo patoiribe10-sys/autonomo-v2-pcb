@@ -21,6 +21,7 @@ const NAV = [
     { title: 'Programar el ESP32', path: 'docs/guia/programar.md' },
     { title: 'Firmware y plan de pruebas', path: 'docs/guia/pruebas.md' },
   ]},
+  { title: 'Manual interactivo', path: 'docs/manual.md' },
   { title: 'Resultado final', path: 'docs/resultado.md' },
   { title: 'Plataforma de documentación', path: 'docs/plataforma.md' },
   { title: 'Preguntas frecuentes', path: 'docs/faq.md' },
@@ -79,9 +80,9 @@ async function load() {
     if (/^(https?:|mailto:)/.test(h)) { a.target = '_blank'; a.rel = 'noopener'; return; }
     if (h.startsWith('#')) { a.href = `#${path}?${h.slice(1)}`; return; }
     const [file, hash] = h.split('#');
-    const full = resolve(path, file);
+    const full = resolve(path, file) + (file.endsWith('/') ? '/' : '');
     if (full.endsWith('.md')) a.href = `#${full}${hash ? '?' + hash : ''}`;
-    else { a.href = full; if (!/\.(png|jpg|svg)$/.test(full)) a.setAttribute('download', ''); }
+    else { a.href = full; if (!/(\.(png|jpg|svg|html)|\/)$/.test(full)) a.setAttribute('download', ''); }
   });
   // tablas con scroll, figuras con pie
   el.querySelectorAll('table').forEach(t => { const w = document.createElement('div'); w.className = 'tablewrap'; t.replaceWith(w); w.appendChild(t); });

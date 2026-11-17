@@ -4,6 +4,8 @@ Documentación de la placa de control del carro autónomo a escala 1:10 del equi
 
 **Sitio:** https://patoiribe10-sys.github.io/autonomo-v2-pcb/
 
+**Manual interactivo:** https://patoiribe10-sys.github.io/autonomo-v2-pcb/manual/ (placa clickeable, qué conectar en cada conector, compras y problemas)
+
 ![La placa ensamblada](assets/img/foto-superior.jpg)
 
 La placa recibe una batería LiPo 3S y saca de ahí cuatro voltajes: 10 V para una Jetson Orin Nano, 5 V para la lógica, 5 V aparte para el servo y 3.3 V. Lleva un ESP32-WROOM-32E que controla el motor y la dirección. Son 4 capas en 100 × 100 mm, diseñada en Altium Designer y fabricada con ensamblaje en PCBWay.
@@ -24,6 +26,7 @@ La placa recibe una batería LiPo 3S y saca de ahí cuatro voltajes: 10 V para u
 | Conectividad (USB y Bluetooth) | [docs/hardware/conectividad.md](docs/hardware/conectividad.md) |
 | Fotografía del resultado final | [docs/resultado.md](docs/resultado.md) |
 | Guía de usuario | [docs/guia/README.md](docs/guia/README.md) |
+| Manual interactivo | [manual/](https://patoiribe10-sys.github.io/autonomo-v2-pcb/manual/) · [docs/manual.md](docs/manual.md) |
 | Recomendación de plataforma para documentación | [docs/plataforma.md](docs/plataforma.md) |
 
 ## Carpetas

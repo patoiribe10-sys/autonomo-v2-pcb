@@ -4,6 +4,8 @@ Esta guía es para alguien del equipo que recibe la placa y necesita dejarla fun
 
 > La placa todavía está en fabricación. Los pasos salen del diseño y del plan de pruebas; cuando se validen con la placa en la mano se van a corregir aquí mismo.
 
+> Para ver la placa pieza por pieza y qué conectar en cada conector, abre el [manual interactivo](../../manual/).
+
 ## Qué se necesita
 
 - Batería LiPo 3S con conector XT60, cargada y balanceada.

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manual interactivo · PCB Autonomo_V2</title>
+<style>
+:root{--ink:#14171c;--ink2:#3b424c;--mute:#6b7480;--line:#e3e6ea;--bg:#fff;--soft:#f6f7f9;--mask:#111317;--gold:#c9971a;--goldl:#fdf3d3;--link:#8a6410;
+--pw:#d9822b;--dt:#2f6fd0;--ct:#3b424c;--sf:#c8372d;--ok:#2e8b57}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.6 Inter,"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:var(--link)}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.top{position:sticky;top:0;z-index:30;background:var(--mask);color:#fff}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;height:54px;padding:0 18px}
+.brand{font-weight:700;font-size:17px;white-space:nowrap}
+.brand::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--gold);margin-right:10px;box-shadow:0 0 0 3px #2a2416}
+.brand small{font-weight:400;color:#aab1ba;margin-left:10px;font-size:13px}
+.bar a{color:#fff;font-size:13.5px;text-decoration:none;border:1px solid #3a3f47;padding:4px 11px;border-radius:6px;white-space:nowrap}
+.tabs{display:flex;gap:2px;overflow-x:auto;padding:0 10px;background:#1b1e24;border-bottom:2px solid var(--gold);scrollbar-width:none}
+.tabs button{background:none;border:0;color:#c9ced6;font-size:14px;font-weight:600;padding:10px 12px;white-space:nowrap;cursor:pointer;border-bottom:3px solid transparent}
+.tabs button.on{color:#fff;border-bottom-color:var(--gold)}
+main{max-width:1180px;margin:0 auto;padding:22px 20px 70px}
+section.view{display:none}
+section.view.on{display:block}
+h1{font-size:30px;line-height:1.2;margin:4px 0 10px;letter-spacing:-.01em}
+h2{font-size:22px;margin:30px 0 10px}
+h3{font-size:17px;margin:18px 0 6px}
+p{margin:0 0 10px;max-width:78ch}
+.lead{font-size:17px;color:var(--ink2)}
+.note{border-left:4px solid var(--gold);background:var(--goldl);padding:10px 14px;border-radius:6px;margin:14px 0;max-width:80ch}
+.note.red{border-color:var(--sf);background:#fbe9e7}
+.note.blue{border-color:var(--dt);background:#e9f0fb}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#fff}
+.card h3{margin-top:0}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:20px;margin:0 4px 4px 0;background:var(--soft);color:var(--ink2);border:1px solid var(--line)}
+.tag.nec{background:#fbe9e7;color:#9b2b22;border-color:#f3c6c0}
+.tag.rec{background:var(--goldl);color:#7a5a0e;border-color:#f0dc9c}
+.tag.opc{background:#e9f0fb;color:#1f4f99;border-color:#c8d9f3}
+.tag.pw{background:#fdeedd;color:#9a5212;border-color:#f6d3ab}
+.tag.dt{background:#e9f0fb;color:#1f4f99;border-color:#c8d9f3}
+table{border-collapse:collapse;width:100%;font-size:14.5px;margin:6px 0 12px}
+th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:700}
+code,pre{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13.5px}
+code{background:var(--soft);padding:1px 5px;border-radius:4px}
+pre{background:#14171c;color:#e8eaed;padding:12px 14px;border-radius:8px;overflow-x:auto;line-height:1.45;margin:8px 0 12px}
+pre code{background:none;padding:0;color:inherit}
+/* placa */
+.board-wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-areas:"b p" "l p";gap:14px 20px;align-items:start}.board{grid-area:b}.panel{grid-area:p}.list{grid-area:l}
+.board{position:relative;border-radius:10px;overflow:hidden;background:#0d0f12;box-shadow:0 2px 14px rgba(0,0,0,.18);touch-action:manipulation}
+.board img{display:block;width:100%;height:auto;user-select:none}
+.hs{position:absolute;transform:translate(-50%,-50%);width:26px;height:26px;border-radius:50%;border:2px solid #fff;background:var(--gold);color:#14171c;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;box-shadow:0 0 0 3px rgba(0,0,0,.35);transition:transform .12s}
+.hs.c-con{background:var(--dt);color:#fff}
+.hs.c-pw{background:var(--pw);color:#fff}
+.hs.c-cmp{background:var(--gold)}
+.hs.c-sf{background:var(--sf);color:#fff}
+.hs:hover{transform:translate(-50%,-50%) scale(1.15)}
+.hs.sel{transform:translate(-50%,-50%) scale(1.3);box-shadow:0 0 0 4px #fff,0 0 0 7px var(--ink)}
+.hs.dim{opacity:.18;pointer-events:none}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.chip{border:1px solid var(--line);background:#fff;border-radius:20px;padding:4px 12px;font-size:13.5px;cursor:pointer;display:flex;align-items:center;gap:6px}
+.chip i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.panel{border:1px solid var(--line);border-radius:10px;padding:16px 18px;background:#fff;min-height:200px;position:sticky;top:112px;max-height:calc(100vh - 130px);overflow:auto}
+.panel .ref{font-size:12.5px;font-weight:800;letter-spacing:.06em;color:var(--mute);text-transform:uppercase}
+.panel h2{margin:2px 0 8px;font-size:21px}
+.panel h4{margin:14px 0 4px;font-size:14px;text-transform:uppercase;letter-spacing:.05em;color:var(--mute)}
+.navbtns{display:flex;justify-content:space-between;gap:8px;margin-top:14px}
+.navbtns button,.btn{border:1px solid var(--line);background:var(--soft);border-radius:7px;padding:6px 12px;cursor:pointer;font-size:14px}
+.list{columns:2;column-gap:20px;font-size:14px;margin-top:8px;padding-left:0;list-style:none}
+.list li{break-inside:avoid;padding:2px 0}
+.list button{background:none;border:0;padding:0;color:var(--link);cursor:pointer;text-align:left;font-size:14px}
+/* energia */
+.flow{display:flex;flex-direction:column;gap:8px;max-width:820px}
+.node{display:flex;gap:10px;align-items:stretch}
+.box{flex:1;border:1px solid var(--line);border-radius:8px;padding:8px 12px;background:#fff;font-size:14.5px}
+.box b{display:block}
+.box.pw{border-left:5px solid var(--pw)}
+.box.sf{border-left:5px solid var(--sf)}
+.box.dt{border-left:5px solid var(--dt)}
+.arrow{text-align:center;color:var(--pw);font-weight:800;line-height:1}
+.branches{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px}
+/* compras */
+.shop td:first-child{width:34px;text-align:center}
+.shop input{width:18px;height:18px}
+.shop tr.done td{opacity:.5}
+details{border:1px solid var(--line);border-radius:9px;padding:9px 14px;margin:8px 0;background:#fff}
+details summary{cursor:pointer;font-weight:700}
+details[open] summary{margin-bottom:8px}
+.pins{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.pin{border:1px solid var(--line);border-radius:6px;padding:3px 8px;font-size:13px;background:var(--soft)}
+.pin b{color:var(--mute);margin-right:4px}
+.foot{margin-top:40px;font-size:13px;color:var(--mute);border-top:1px solid var(--line);padding-top:12px}
+@media (max-width:860px){
+ .board-wrap{grid-template-columns:1fr;grid-template-areas:"b" "p" "l"}
+ .panel{position:static;max-height:none}
+ .hs{width:22px;height:22px;font-size:10px}
+ .list{columns:1}
+ h1{font-size:25px}
+ main{padding:16px 14px 60px}
+ .brand small{display:none}
+}
+@media print{.top,.chips,.navbtns{display:none}section.view{display:block}}
+</style>
+</head>
+<body>
+<header class="top">
+ <div class="bar"><span class="brand">PCB Autonomo_V2 <small>Manual interactivo</small></span><a href="https://patoiribe10-sys.github.io/autonomo-v2-pcb/">Documentación</a></div>
+ <nav class="tabs" id="tabs">
+  <button data-v="inicio" class="on">Inicio</button>
+  <button data-v="placa">Placa</button>
+  <button data-v="conectado">Lo que ya lleva</button>
+  <button data-v="agregar">Qué agregar</button>
+  <button data-v="energia">Energía</button>
+  <button data-v="cambios">Cambios</button>
+  <button data-v="compras">Compras</button>
+  <button data-v="problemas">Problemas</button>
+ </nav>
+</header>
+<main>
+
+<!-- INICIO -->
+<section class="view on" id="v-inicio">
+ <h1>Manual de la PCB Autonomo_V2</h1>
+ <p class="lead">Esta placa es el puente entre la batería, la computadora del carro y las piezas que se mueven. Recibe la batería, la reparte en los voltajes que pide cada cosa y mueve el motor y la dirección con las órdenes que manda la Jetson.</p>
+ <p>El manual está pensado para que alguien que nunca ha visto la placa pueda conectarla, entender qué hace cada parte y agregarle cosas. Si vas a otra competencia con reglas distintas, aquí ves qué se puede quitar o poner.</p>
+
+ <div class="grid g3" style="margin-top:16px">
+  <div class="card"><h3>Placa</h3><p>Foto real con puntos que puedes tocar. Cada punto te dice qué es esa pieza y cómo se usa.</p><button class="btn" data-go="placa">Abrir</button></div>
+  <div class="card"><h3>Lo que ya lleva</h3><p>Batería, motor, servo y Jetson. Qué modelo usamos y cómo se conecta cada uno.</p><button class="btn" data-go="conectado">Abrir</button></div>
+  <div class="card"><h3>Qué agregar</h3><p>Sensores I2C, pantalla, buzzer, luces, tira LED, interruptor y paro. Modelo, conexión y código.</p><button class="btn" data-go="agregar">Abrir</button></div>
+  <div class="card"><h3>Energía</h3><p>Por dónde pasa la corriente, cuánto aguanta cada riel y qué LED lo indica.</p><button class="btn" data-go="energia">Abrir</button></div>
+  <div class="card"><h3>Cambios</h3><p>Modificaciones que sí se pueden hacer: más sensores, otro voltaje de servo, fusible, programar sin jumpers.</p><button class="btn" data-go="cambios">Abrir</button></div>
+  <div class="card"><h3>Compras y problemas</h3><p>Lista para comprar con lo que ya tienes marcado, y qué revisar cuando algo no funciona.</p><button class="btn" data-go="compras">Compras</button> <button class="btn" data-go="problemas">Problemas</button></div>
+ </div>
+
+ <h2>En un minuto</h2>
+ <table>
+  <tr><th>Dato</th><th>Valor</th></tr>
+  <tr><td>Tamaño</td><td>100 × 100 mm, 4 capas, todo el montaje arriba</td></tr>
+  <tr><td>Batería</td><td>LiPo 3S (11.1 V nominal, 12.6 V llena) por XT60, fusible de 10 A</td></tr>
+  <tr><td>Microcontrolador</td><td>ESP32-WROOM-32E con WiFi y Bluetooth</td></tr>
+  <tr><td>Voltajes que salen</td><td>10 V para la Jetson · 5.2 V para el servo · 5 V lógica · 3.3 V del ESP32</td></tr>
+  <tr><td>Motor</td><td>Un motor DC con encoder, con driver TB6612FNG</td></tr>
+  <tr><td>Seguridad</td><td>Paro de emergencia por hardware, protección de polaridad, TVS contra picos</td></tr>
+  <tr><td>Programación</td><td>USB-C (chip CH340C) o el conector J15</td></tr>
+ </table>
+
+ <h2>Antes de cada competencia</h2>
+ <p>Cada concurso tiene sus propias reglas sobre sensores y botones. Revisa estas tres cosas antes de armar:</p>
+ <ol>
+  <li><b>Qué sensores dejan usar.</b> En RoboUAQ 2026, por ejemplo, solo se permiten sensores de visión. Ahí la IMU y el sensor de distancia se quedan fuera, aunque sirven para pruebas.</li>
+  <li><b>Cómo se arranca.</b> RoboUAQ pide encender con un solo botón de inicio. Para eso está START (J10 o el botón S3 de la placa).</li>
+  <li><b>Si piden paro de emergencia visible.</b> El paro va en J10 y corta el motor sin depender del programa.</li>
+ </ol>
+ <p>Todo lo que agregues por I2C, J14, J8, J9 o J7 se desconecta sin tocar la placa. Así puedes armar una versión por competencia.</p>
+</section>
+
+<!-- PLACA -->
+<section class="view" id="v-placa">
+ <h1>La placa, pieza por pieza</h1>
+ <p>Toca un punto de la foto. Los azules son conectores, los naranjas son de energía, los rojos son de seguridad y los dorados son chips y botones. La foto la tomó el ensamblador, con la placa en la misma orientación que la serigrafía: XT60 abajo a la izquierda y USB arriba.</p>
+ <div class="chips" id="chips">
+  <button class="chip on" data-f="all">Todo</button>
+  <button class="chip" data-f="con"><i style="background:var(--dt)"></i>Conectores</button>
+  <button class="chip" data-f="pw"><i style="background:var(--pw)"></i>Energía</button>
+  <button class="chip" data-f="sf"><i style="background:var(--sf)"></i>Seguridad</button>
+  <button class="chip" data-f="cmp"><i style="background:var(--gold)"></i>Chips y botones</button>
+ </div>
+ <div class="board-wrap">
+   <div class="board" id="board"><img src="../assets/img/foto-superior.jpg" alt="Fotografía de la PCB Autonomo_V2 ensamblada, vista superior" width="1050" height="1050"></div>
+  <aside class="panel" id="panel" aria-live="polite"></aside>
+  <ul class="list" id="list"></ul>
+ </div>
+</section>
+
+<!-- CONECTADO -->
+<section class="view" id="v-conectado">
+ <h1>Lo que ya lleva el carro</h1>
+ <p>Estas son las piezas con las que se diseñó la placa. Si cambias alguna, revisa la columna de límites.</p>
+ <div class="grid g2">
+  <div class="card"><span class="tag pw">P1 · XT60</span><h3>Batería LiPo 3S</h3>
+   <p>11.1 V nominal y 12.6 V llena. Entra por el XT60 marcado BATERIA.</p>
+   <p><b>Límite:</b> el fusible es de 10 A. La placa aguanta hasta unos 15 V; por eso no uses 4S.</p>
+   <p><b>Ojo:</b> con la batería baja (cerca de 10.5 V) la Jetson ya no recibe sus 10 V completos y puede reiniciarse. Carga y balancea antes de correr.</p></div>
+  <div class="card"><span class="tag dt">J2 · XH 6 pines</span><h3>Motor GM25-370 con encoder</h3>
+   <p>Un solo motor de tracción con encoder de cuadratura (360 pulsos por vuelta). La versión es de 24 V, pero con la batería de 11 V se mueve bien.</p>
+   <div class="pins"><span class="pin"><b>1</b>MOT_B</span><span class="pin"><b>2</b>3.3 V encoder</span><span class="pin"><b>3</b>ENC_B</span><span class="pin"><b>4</b>ENC_A</span><span class="pin"><b>5</b>GND</span><span class="pin"><b>6</b>MOT_A</span></div>
+   <p><b>Límite:</b> el driver TB6612FNG da 1.2 A continuos y 3.2 A de pico por canal. Aquí van los dos canales juntos, así que aguanta unos 2.4 A continuos. Un motor más grande necesita otro driver.</p>
+   <p><b>Si gira al revés:</b> cambia de lugar MOT_A y MOT_B en el cable o invierte el signo en el firmware.</p></div>
+  <div class="card"><span class="tag dt">J3 · XH 3 pines</span><h3>Servo MG995 (dirección Ackermann)</h3>
+   <p>Recibe 5.2 V de un regulador solo para él. Así sus picos no reinician al ESP32.</p>
+   <div class="pins"><span class="pin"><b>1</b>GND (café)</span><span class="pin"><b>2</b>5.2 V (rojo)</span><span class="pin"><b>3</b>señal (naranja)</span></div>
+   <p><b>Calibración del carro:</b> 1100 µs izquierda, 1360 µs centro, 1730 µs derecha. Señal en GPIO25, pasa por un buffer a 5 V.</p>
+   <p><b>Límite:</b> el regulador da hasta 5 A. El MG995 pide 2.5 a 3 A de pico.</p></div>
+  <div class="card"><span class="tag pw">J5</span> <span class="tag dt">J4</span><h3>Jetson Orin Nano</h3>
+   <p>Es la computadora que ve con las cámaras y decide. Las cámaras y el control de Xbox se conectan a la Jetson, no a esta placa.</p>
+   <p><b>Energía (J5):</b> 10 V al jack de la Jetson. El kit de desarrollo acepta de 9 a 20 V. Usa un plug de barril igual al del eliminador original.</p>
+   <p><b>Datos (J4):</b> UART entre ESP32 y Jetson.</p>
+   <div class="pins"><span class="pin"><b>1</b>GND → pin 6</span><span class="pin"><b>2</b>TX ESP32 → pin 10</span><span class="pin"><b>3</b>RX ESP32 → pin 8</span><span class="pin"><b>4</b>HB (libre)</span></div>
+   <p>Mensajes: la Jetson manda <code>V&lt;vel&gt;,S&lt;dir&gt;</code> y el ESP32 contesta <code>v&lt;vel&gt;,s&lt;dir&gt;</code>.</p></div>
+  <div class="card"><span class="tag dt">J1 · USB-C</span><h3>Computadora para programar</h3>
+   <p>El USB alimenta solo al ESP32. Sirve para cargar firmware y ver el monitor serie a 115200.</p>
+   <p>Motor, servo y Jetson necesitan la batería. Puedes tener USB y batería conectados al mismo tiempo.</p></div>
+  <div class="card"><span class="tag">Firmware</span><h3>Firmware de prueba</h3>
+   <p>Hay un programa con menú que prueba todo: LED, voltajes, START y paro, motor, servo, buzzer, luces, tira, UART, escaneo I2C y J14.</p>
+   <p>Está en el repositorio, carpeta <code>firmware/prueba-pcb</code>. Úsalo siempre que conectes algo nuevo.</p></div>
+ </div>
+</section>
+
+<!-- AGREGAR -->
+<section class="view" id="v-agregar">
+ <h1>Qué le puedes agregar</h1>
+ <p>Cada tarjeta dice qué te aporta, qué modelo comprar, cómo se conecta y el código mínimo. Las etiquetas indican si lo recomiendo para todos los carros o solo para algunas competencias.</p>
+ <div class="note blue">Los cables los haces con tu kit JST XH. Antes de crimpar, compara el orden de pines del módulo con el del conector de la placa. Cambia de un fabricante a otro.</div>
+ <div id="mods"></div>
+</section>
+
+<!-- ENERGIA -->
+<section class="view" id="v-energia">
+ <h1>Cómo se reparte la energía</h1>
+ <p>Sigue el camino de arriba abajo. Cada caja dice qué pieza hace el trabajo y cuánto aguanta.</p>
+ <div class="flow">
+  <div class="box pw"><b>Batería 3S → P1 (XT60)</b>11.1 V nominal. Todo empieza aquí.</div>
+  <div class="arrow">↓</div>
+  <div class="box sf"><b>F1 · fusible de 10 A</b>Se funde si hay un corto. Se cambia sin soldar.</div>
+  <div class="arrow">↓</div>
+  <div class="box pw"><b>P2 · interruptor general</b>Sin interruptor o puente aquí, nada prende.</div>
+  <div class="arrow">↓</div>
+  <div class="box sf"><b>Q7 · protección de polaridad</b>Si la batería entra al revés, no deja pasar corriente. D12 (TVS) recorta los picos de voltaje.</div>
+  <div class="arrow">↓ VBAT</div>
+  <div class="branches">
+   <div class="box pw"><b>U21 → 10 V → J5</b>Jetson. Hasta 5 A. LED <b>VJET</b>.</div>
+   <div class="box pw"><b>U22 → 5.2 V → J3</b>Servo. Hasta 5 A. LED <b>SRV</b>.</div>
+   <div class="box pw"><b>U1 → 5 V</b>Buzzer, tira LED, buffer y entrada del 3.3 V. Hasta 5 A. LED <b>5V</b>.</div>
+   <div class="box sf"><b>Q8 (paro) → TB6612 → J2</b>Motor. Si el lazo del paro se abre, el motor se queda sin batería.</div>
+   <div class="box pw"><b>J9 · luces</b>Voltaje de batería directo, conmutado por Q6.</div>
+  </div>
+  <div class="arrow">↓ desde 5 V</div>
+  <div class="box pw"><b>U2 → 3.3 V</b>ESP32, encoder, sensores I2C, J14 y J15. Hasta 600 mA en total. LED <b>3V3</b>. El USB también alimenta este riel.</div>
+ </div>
+
+ <h2>Cuánto le puedes colgar a cada riel</h2>
+ <table>
+  <tr><th>Riel</th><th>Ya lo usan</th><th>Margen para extras</th></tr>
+  <tr><td>3.3 V (600 mA)</td><td>ESP32 (hasta ~250 mA con WiFi), encoder, CH340</td><td>Unos 200 mA. Alcanza para IMU, OLED y un ToF juntos.</td></tr>
+  <tr><td>5 V (5 A)</td><td>Entrada del 3.3 V, buffer</td><td>Tira LED y buzzer. Con 16 LEDs a brillo medio vas sobrado.</td></tr>
+  <tr><td>5.2 V servo (5 A)</td><td>Servo</td><td>Solo el servo. No le cuelgues nada más.</td></tr>
+  <tr><td>10 V (5 A)</td><td>Jetson (hasta ~25 W)</td><td>Solo la Jetson.</td></tr>
+  <tr><td>VBAT</td><td>Todo lo anterior y el motor</td><td>Luces en J9: hasta ~1 A.</td></tr>
+ </table>
+
+ <h2>LEDs indicadores</h2>
+ <table>
+  <tr><th>LED</th><th>Encendido quiere decir</th><th>Si está apagado</th></tr>
+  <tr><td>HB</td><td>Lo controla el programa (GPIO2). El firmware de prueba lo hace parpadear.</td><td>El programa no está corriendo o no usa el LED.</td></tr>
+  <tr><td>3V3</td><td>Hay 3.3 V</td><td>Revisa 5 V o el USB.</td></tr>
+  <tr><td>5V</td><td>Hay 5 V de lógica</td><td>Revisa batería, P2 y fusible.</td></tr>
+  <tr><td>SRV</td><td>Hay voltaje para el servo</td><td>Revisa batería o un corto en J3.</td></tr>
+  <tr><td>VJET</td><td>Hay 10 V para la Jetson</td><td>Revisa batería o un corto en J5.</td></tr>
+ </table>
+
+ <h2>Medir la batería desde el programa</h2>
+ <p>El ESP32 lee la batería por un divisor en GPIO36. La lectura en volts se multiplica por 5.545.</p>
+<pre><code>float vbat = analogReadMilliVolts(36) / 1000.0 * 5.545;
+if (vbat &lt; 10.8) digitalWrite(13, HIGH);   // buzzer: batería baja</code></pre>
+</section>
+
+<!-- CAMBIOS -->
+<section class="view" id="v-cambios">
+ <h1>Cambios que se le pueden hacer</h1>
+ <p>Van de lo más fácil (solo cables) a lo que pide soldar. Lo que es de cables lo puedes cambiar entre competencias.</p>
+ <details open><summary>1. Poner más de dos sensores I2C</summary>
+  <p>J11 y J12 son el mismo bus. Puedes colgar varios módulos siempre que cada uno tenga una dirección distinta. Para pasar de dos conectores a más, usa módulos que traigan dos conectores (uno de entrada y uno de salida) o haz un cable en "Y".</p>
+  <table><tr><th>Módulo</th><th>Dirección</th></tr>
+   <tr><td>OLED SSD1306</td><td>0x3C (algunos 0x3D)</td></tr>
+   <tr><td>ToF VL53L0X / VL53L1X</td><td>0x29 (los dos)</td></tr>
+   <tr><td>IMU BNO085</td><td>0x4A o 0x4B</td></tr>
+   <tr><td>IMU MPU-6050</td><td>0x68 o 0x69</td></tr>
+   <tr><td>IMU ICM-20948</td><td>0x68 o 0x69</td></tr>
+   <tr><td>Medidor de corriente INA219</td><td>0x40 a 0x4F</td></tr>
+  </table>
+  <p><b>Dos sensores iguales:</b> si pones dos VL53L1X, los dos nacen en 0x29. Conecta el pin XSHUT de uno a IO4 o IO5 (J14), apágalo, cambia la dirección del otro y luego préndelo. Esto se repite cada vez que arranca.</p>
+  <p><b>Cables:</b> menos de 30 cm. La placa ya trae resistencias pull-up de 4.7 kΩ. Si cuelgas más de tres módulos que también traen las suyas y empiezan los errores, quita las de algún módulo.</p>
+  <p>Para saber qué quedó conectado, usa la opción <b>b</b> del firmware de prueba (escaneo I2C).</p>
+ </details>
+ <details><summary>2. Cambiar el buzzer, las luces o la tira por otra competencia</summary>
+  <p>Los tres van en conectores aparte. Se quitan sin tocar nada. Si no los usas, el programa solo deja esos pines apagados.</p>
+  <p>La tira LED puede cumplir el papel de luces si una competencia pide faros o direccionales. Puedes poner un pedazo al frente y otro atrás en el mismo cable: la tira se encadena.</p>
+ </details>
+ <details><summary>3. Programar sin los jumpers de JP1</summary>
+  <p>Con los dos jumpers puestos en JP1, el IDE resetea y programa solo. Sin ellos, la Jetson no puede reiniciar el ESP32 por accidente al abrir el puerto, que era una falla de la versión anterior.</p>
+  <p>Sin jumpers: mantén BOOT (S2), presiona y suelta EN (S1), suelta BOOT y luego carga el programa. Para competir, quita los jumpers.</p>
+ </details>
+ <details><summary>4. Cambiar el fusible</summary>
+  <p>F1 es un portafusible OMNI-BLOK con un fusible NANO2 de 10 A, rápido, serie 451. El fusible sale con pinzas y se cambia sin soldar.</p>
+  <p>Puedes poner uno más chico, por ejemplo 7.5 A, si quieres que proteja antes. No pongas uno más grande que 10 A.</p>
+ </details>
+ <details><summary>5. Subir el servo a 6 V (avanzado, hay que soldar)</summary>
+  <p>El regulador del servo da 0.8 × (1 + R23 / R24). Hoy R23 = 54.9 kΩ y R24 = 10 kΩ, que da 5.2 V. Con R23 = 64.9 kΩ da 6.0 V. A 6 V un servo suele ganar fuerza y velocidad.</p>
+  <p>Solo hazlo si tu servo aguanta 6 V (revisa su hoja). Son resistencias 0402, así que pide ayuda con la soldadura si no tienes práctica. C21 es de 16 V, así que no hay que cambiarlo.</p>
+ </details>
+ <details><summary>6. Usar otro motor</summary>
+  <p>El TB6612FNG aguanta 1.2 A continuos y 3.2 A de pico por canal, con el motor hasta 15 V. Aquí los dos canales van juntos.</p>
+  <p>Si el motor nuevo pide más corriente al arrancar (busca la "stall current" en su hoja), necesitas un driver externo. Puedes manejarlo con los mismos pines de J2 sacando PWM y dirección por J14.</p>
+ </details>
+ <details><summary>7. Usar el Bluetooth o el WiFi del ESP32</summary>
+  <p>El ESP32 trae los dos. Sirven para ver datos en el celular (voltaje, velocidad, modo) sin cables, o para un control de pruebas.</p>
+  <p>Ojo: con WiFi o Bluetooth encendidos, el ADC2 deja de funcionar. En esta placa eso solo afecta a IO4 si lo quisieras usar como entrada analógica. La batería y el paro se leen por ADC1, así que no les pasa nada.</p>
+ </details>
+ <details><summary>8. Lo que no conviene cambiar</summary>
+  <ul>
+   <li>Batería de 4S o más: rebasa lo que aguantan el driver del motor y el regulador de 5 V.</li>
+   <li>Conectar algo más al riel del servo o de la Jetson.</li>
+   <li>Cargas grandes en el 3.3 V (más de 200 mA extra).</li>
+   <li>Quitar el paro de emergencia con un puente fijo para competir.</li>
+  </ul>
+ </details>
+</section>
+
+<!-- COMPRAS -->
+<section class="view" id="v-compras">
+ <h1>Lista de compras</h1>
+ <p>Marca lo que ya tienes. Se guarda en este navegador. Los botones abren la búsqueda con el modelo exacto en Mercado Libre y Amazon. En tiendas del centro (AMMA, +Electrónica) pide el mismo número de modelo.</p>
+ <table class="shop" id="shop"><thead><tr><th></th><th>Qué</th><th>Modelo</th><th>Para qué</th><th>Buscar</th></tr></thead><tbody></tbody></table>
+ <p style="font-size:13.5px;color:var(--mute)">Necesario = para que la placa funcione en el carro. Recomendado = vale la pena en casi cualquier competencia. Opcional = según reglas y lo que quieras mostrar.</p>
+</section>
+
+<!-- PROBLEMAS -->
+<section class="view" id="v-problemas">
+ <h1>Cuando algo no funciona</h1>
+ <p>Empieza siempre por los LEDs de la placa. Te dicen qué riel falta.</p>
+ <details open><summary>No prende ningún LED</summary><ol>
+  <li>¿Hay interruptor o puente en P2? Sin eso no pasa corriente.</li>
+  <li>¿La batería está cargada? Mide en el XT60.</li>
+  <li>¿El fusible F1 está bien? Mide continuidad entre sus extremos.</li>
+  <li>¿La batería quedó al revés? Q7 bloquea y no prende nada. Voltéala.</li></ol></details>
+ <details><summary>Prenden los LEDs pero el motor no gira</summary><ol>
+  <li>El paro está abierto. Revisa que el botón no esté presionado o pon un puente entre J10 pin 3 y pin 4 para probar.</li>
+  <li>El programa debe poner STBY (GPIO19) en alto.</li>
+  <li>Prueba con la opción 4 del firmware de prueba, con las ruedas al aire.</li></ol></details>
+ <details><summary>La Jetson o el ESP32 se reinician</summary><ol>
+  <li>Batería baja. Por debajo de unos 10.5 V la Jetson ya no recibe 10 V.</li>
+  <li>El servo se traba contra el tope y jala mucha corriente. Ajusta los límites de 1100 y 1730 µs.</li>
+  <li>Si el ESP32 se reinicia al abrir el puerto desde la Jetson, quita los jumpers de JP1.</li></ol></details>
+ <details><summary>No puedo programar el ESP32</summary><ol>
+  <li>Instala el driver del CH340 en la computadora.</li>
+  <li>Sin jumpers en JP1 hay que entrar a modo programación a mano: BOOT presionado, toque a EN, soltar BOOT.</li>
+  <li>Prueba otro cable USB-C. Muchos solo cargan y no pasan datos.</li></ol></details>
+ <details><summary>El sensor I2C no aparece</summary><ol>
+  <li>Revisa el orden de pines del cable contra la tarjeta del módulo.</li>
+  <li>Corre el escaneo I2C (opción b del firmware de prueba).</li>
+  <li>En el código usa <code>Wire.begin(32, 33)</code>. Los pines I2C de esta placa no son los de siempre (21 y 22).</li>
+  <li>Dos módulos con la misma dirección chocan. Revisa la tabla de direcciones.</li></ol></details>
+ <details><summary>La tira LED hace colores raros o no prende</summary><ol>
+  <li>Revisa que el cable llegue a la entrada (DIN) de la tira, no a la salida. La flecha de la tira apunta hacia afuera.</li>
+  <li>Prueba <code>NEO_GRB</code> o <code>NEO_RGB</code> según tu tira.</li>
+  <li>Baja el brillo con <code>setBrightness</code>.</li></ol></details>
+ <details><summary>Quiero medir con multímetro</summary>
+  <p>La placa tiene puntos de prueba (TP1 a TP13) junto a los rieles y señales. Pon la punta negra en cualquier GND (el tornillo de la bornera J5 pin 2, por ejemplo) y la roja en el punto. Compara con lo esperado: 3.3, 5.0, ~5.2 y ~10 V.</p></details>
+</section>
+
+<div class="foot">PCB Autonomo_V2 · Alain Iribe Haddad · Ingeniería Mecatrónica, Universidad Anáhuac Querétaro · Equipo DELTA · 2026. Documentación con licencia CC BY 4.0.
+ <br>Fuentes de datos de componentes: hojas de datos de TI (TPS565201), Toshiba (TB6612FNG), Littelfuse (154 OMNI-BLOK), CEVA (BNO085), ST (VL53L1X), Espressif (ESP32) y NVIDIA (Jetson Orin Nano). Valores de la placa sacados del archivo de Altium.</div>
+</main>
+
+<script>
+// ---- datos de la placa (coordenadas en mm, origen abajo a la izquierda) ----
+const M=[[6.725,-0.021,11.666],[-0.047,-6.535,679.574]]; // mm -> px sobre foto de 700
+function pos(x,y){return [(M[0][0]*x+M[0][1]*y+M[0][2])/7,(M[1][0]*x+M[1][1]*y+M[1][2])/7];}
+const P=[
+ {r:'P1',c:'pw',x:10.6,y:11,n:'Batería (XT60)',t:'Aquí entra la batería LiPo 3S. Todo el carro sale de este conector.',
+  pins:[['+','Batería positiva (rojo)'],['−','GND (negro)']],
+  use:'Conecta la batería con un XT60 hembra. El + está marcado en la serigrafía.',
+  warn:'La placa se protege si la batería entra al revés, pero no lo hagas a propósito. Nunca uses más de 3S.'},
+ {r:'P2',c:'pw',x:27,y:8.4,n:'Interruptor general (SWITCH)',t:'Entre IN y OUT pasa toda la corriente del carro. Funciona como el switch de encendido.',
+  pins:[['IN','Viene del fusible'],['OUT','Va al resto de la placa']],
+  use:'Atornilla aquí los dos cables de un interruptor de palanca de 12 V DC y 20 A. Para pruebas en mesa basta un cable puente.',
+  warn:'Sin nada conectado aquí la placa no prende. Usa cable grueso (calibre 16 o 18) porque pasan hasta 10 A.',go:'interruptor'},
+ {r:'F1',c:'sf',x:25.3,y:14.6,n:'Fusible de 10 A',t:'Si hay un corto, se funde antes de que se dañe la batería o la placa.',
+  use:'Va en un portafusible. Se saca con pinzas y se cambia por otro NANO2 de 10 A rápido.',
+  warn:'Si se funde, busca el corto antes de cambiarlo. No pongas uno de más de 10 A.'},
+ {r:'Q7',c:'sf',x:38,y:9.5,n:'Protección de polaridad',t:'Es un MOSFET P (AO4407A). Si conectas la batería al revés, se queda abierto y no pasa corriente.',
+  use:'No necesita nada. D13, junto a él, protege su compuerta.'},
+ {r:'D12',c:'sf',x:45.8,y:7.2,n:'TVS contra picos',t:'Diodo SMBJ15A de 600 W. Absorbe picos de voltaje que salen del motor o de desconectar la batería en caliente.',use:'No necesita nada.'},
+ {r:'C1',c:'pw',x:9.5,y:30,n:'Capacitor de entrada',t:'470 µF a 50 V. Guarda energía para los arranques del motor y del servo.',use:'Es la pieza más alta de la placa, unos 20 mm. Tómalo en cuenta para el soporte.'},
+ {r:'Q8',c:'sf',x:22,y:31,n:'Corte del motor (paro)',t:'Otro MOSFET P. Deja pasar batería al motor solo si el lazo del paro (J10 pines 3 y 4) está cerrado.',
+  use:'Funciona sin el programa. Aunque el ESP32 o la Jetson se cuelguen, el paro corta el motor. El servo y la Jetson siguen prendidos.'},
+ {r:'J2',c:'con',x:4.5,y:50,n:'Motor + encoder',t:'Un solo conector para el motor y su encoder.',
+  pins:[['1','MOT_B'],['2','3.3 V del encoder'],['3','ENC_B (GPIO35)'],['4','ENC_A (GPIO34)'],['5','GND'],['6','MOT_A']],
+  use:'Motor GM25-370 con encoder. Si gira al revés, intercambia MOT_A y MOT_B.'},
+ {r:'U5',c:'cmp',x:17,y:50,n:'Driver del motor TB6612FNG',t:'Puente H. Cambia el sentido y la velocidad del motor con las señales del ESP32.',
+  pins:[['GPIO21','IN1'],['GPIO22','IN2'],['GPIO23','PWM'],['GPIO19','STBY (alto = activo)']],
+  use:'Los dos canales van juntos: unos 2.4 A continuos.',warn:'Para motores más grandes hace falta un driver externo.'},
+ {r:'J14',c:'con',x:2.8,y:65.4,n:'GPIO extra',t:'Dos pines libres del ESP32 para lo que necesites.',
+  pins:[['1','3.3 V'],['2','IO4'],['3','IO5'],['4','GND']],
+  use:'Botón de modo, LED extra o el XSHUT de un sensor de distancia.',warn:'IO5 debe estar en alto al prender. Un botón a GND está bien mientras no lo presiones al encender. IO4 no lee analógico si usas WiFi o Bluetooth.',go:'gpio'},
+ {r:'J15',c:'con',x:2.8,y:78.4,n:'Serial / programación del ESP32',t:'El mismo puerto serie del USB, en cables.',
+  pins:[['1','TX0'],['2','RX0'],['3','GND'],['4','3.3 V']],
+  use:'Para programar con un adaptador USB-serie externo (cruza TX con RX) o para ver mensajes sin USB.',warn:'No uses este conector y el USB al mismo tiempo.'},
+ {r:'J10',c:'sf',x:4.5,y:92,n:'START y paro de emergencia',t:'Aquí van el botón de arranque y el paro de emergencia.',
+  pins:[['1','START (GPIO27, bajo = presionado)'],['2','GND'],['3','Lazo del paro'],['4','GND']],
+  use:'START: botón normalmente abierto entre 1 y 2. Paro: contacto normalmente cerrado entre 3 y 4.',
+  warn:'Si el lazo 3–4 queda abierto, el motor no tiene batería. Para probar en mesa, pon un puente entre 3 y 4.',go:'paro'},
+ {r:'S1',c:'cmp',x:30,y:94.5,n:'Botón EN (reset)',t:'Reinicia el ESP32.',use:'Junto con BOOT sirve para entrar a modo programación.'},
+ {r:'S2',c:'cmp',x:30,y:87,n:'Botón BOOT',t:'Mantenlo presionado al dar reset para programar a mano.',use:'Solo hace falta si quitaste los jumpers de JP1.'},
+ {r:'S3',c:'cmp',x:30,y:79.5,n:'Botón START',t:'Hace lo mismo que el START de J10.',use:'Útil en la mesa. En el carro conviene un botón externo en J10.'},
+ {r:'U3',c:'cmp',x:50,y:86.5,n:'ESP32-WROOM-32E',t:'El microcontrolador. Recibe órdenes de la Jetson y mueve todo lo demás: motor, servo, luces, buzzer, tira LED y sensores.',
+  pins:[['WiFi + BT','integrados'],['UART2','a la Jetson'],['I2C','GPIO32 y 33']],
+  use:'Se programa por USB con Arduino o PlatformIO.',warn:'La antena es la parte de arriba con el zigzag. No pongas metal ni cables encima.'},
+ {r:'D5–D9',c:'cmp',x:49,y:66.5,n:'LEDs indicadores',t:'De izquierda a derecha: HB, 3V3, 5V, SRV y VJET.',use:'HB lo controla el programa (GPIO2). Los otros cuatro prenden si su riel tiene voltaje.',go:'leds'},
+ {r:'U2',c:'pw',x:25,y:67,n:'Regulador de 3.3 V',t:'AP2112K. Baja de 5 V a 3.3 V para el ESP32, el encoder y los sensores.',use:'Da hasta 600 mA. Deja unos 200 mA para extras.'},
+ {r:'U1',c:'pw',x:42,y:46,n:'Regulador de 5 V',t:'TPS565201. Saca 5 V de la batería para buzzer, tira LED, buffer y el regulador de 3.3 V.',use:'Hasta 5 A.'},
+ {r:'J1',c:'con',x:76,y:97.1,n:'USB-C',t:'Programar el ESP32 y ver el monitor serie.',use:'Alimenta solo al ESP32. Motor, servo y Jetson necesitan batería.',warn:'Usa un cable que pase datos.'},
+ {r:'U4',c:'cmp',x:76,y:79.3,n:'CH340C (USB a serie)',t:'Convierte el USB en el puerto serie que entiende el ESP32.',use:'En Windows o Mac puede pedir instalar su driver.'},
+ {r:'JP1',c:'cmp',x:66,y:77,n:'AUTO-RESET',t:'Dos jumpers que dejan al USB reiniciar y programar al ESP32 solo.',use:'Con jumpers: programas con un clic. Sin jumpers: la Jetson no puede reiniciar el ESP32 por error.',warn:'La placa no trae los jumpers. Compra dos de 2.54 mm.',go:'jp1'},
+ {r:'J11',c:'con',x:96.5,y:92.9,n:'Sensores I2C (1)',t:'Bus I2C para sensores y pantalla.',pins:[['1','GND'],['2','3.3 V'],['3','SDA (GPIO32)'],['4','SCL (GPIO33)']],use:'J11 y J12 son el mismo bus. Ya trae resistencias pull-up de 4.7 kΩ.',go:'i2c'},
+ {r:'J12',c:'con',x:96.5,y:79.5,n:'Sensores I2C (2)',t:'Igual que J11, en paralelo.',pins:[['1','GND'],['2','3.3 V'],['3','SDA (GPIO32)'],['4','SCL (GPIO33)']],use:'Cada módulo debe tener una dirección distinta.',go:'i2c'},
+ {r:'J4',c:'con',x:96.5,y:66.6,n:'Serial a la Jetson',t:'Comunicación con la Jetson por UART.',pins:[['1','GND → Jetson pin 6'],['2','TX del ESP32 → pin 10'],['3','RX del ESP32 → pin 8'],['4','HB (sin usar)']],use:'Cable XH de 4 a dupont hembra. Las tres líneas llevan resistencia de protección.'},
+ {r:'J7',c:'con',x:96.5,y:54.5,n:'Tira LED RGB',t:'Para una tira direccionable WS2812B.',pins:[['1','GND'],['2','5 V'],['3','DIN (GPIO26, pasa a 5 V)']],use:'La señal ya sale a 5 V por el buffer U23.',go:'tira'},
+ {r:'U23',c:'cmp',x:82,y:58,n:'Buffer 74AHCT125',t:'Sube las señales de 3.3 V a 5 V para el servo y la tira LED.',use:'No necesita nada.'},
+ {r:'J8',c:'con',x:91.5,y:44,n:'Buzzer',t:'Salida para un buzzer de 5 V.',pins:[['+5V','Positivo del buzzer'],['−','Negativo (lo conmuta Q5)']],use:'GPIO13 en alto = suena.',warn:'Hasta unos 100 mA. Usa un buzzer de dos cables, no un módulo de tres pines.',go:'buzzer'},
+ {r:'J9',c:'con',x:91.5,y:33.5,n:'Luces',t:'Salida para luces a voltaje de batería (11 a 12.6 V).',pins:[['VBAT','Positivo de las luces'],['−','Negativo (lo conmuta Q6)']],use:'GPIO14 en alto = encendidas. Todas las luces prenden juntas.',warn:'Hasta ~1 A. Los LEDs sueltos necesitan resistencia.',go:'luces'},
+ {r:'C21',c:'pw',x:77.5,y:29.5,n:'Reserva del servo',t:'1000 µF. Cubre los picos de corriente del servo.',use:'No necesita nada.'},
+ {r:'J3',c:'con',x:96.5,y:21.5,n:'Servo',t:'Dirección del carro.',pins:[['1','GND (café)'],['2','5.2 V (rojo)'],['3','Señal (naranja), GPIO25']],use:'Servo MG995. El voltaje sale de su propio regulador.'},
+ {r:'U22',c:'pw',x:88,y:12,n:'Regulador del servo',t:'TPS54560B. Saca 5.2 V solo para el servo.',use:'Hasta 5 A. Se puede subir a 6 V cambiando R23 (ver Cambios).'},
+ {r:'U21',c:'pw',x:62,y:12,n:'Regulador de 10 V',t:'TPS54560B. Saca 10 V para la Jetson.',use:'Hasta 5 A. Con la batería baja ya no alcanza los 10 V.'},
+ {r:'J5',c:'pw',x:53.5,y:8.6,n:'Alimentación Jetson 10 V',t:'Bornera que va al jack de la Jetson.',pins:[['1','+10 V (centro del plug)'],['2','GND']],use:'Cable de dos hilos con plug de barril igual al del eliminador original de la Jetson.',warn:'Revisa la polaridad con multímetro antes de conectar la Jetson.'},
+];
+const CN={con:'Conector',pw:'Energía',sf:'Seguridad',cmp:'Chip / botón'};
+const board=document.getElementById('board'),panel=document.getElementById('panel'),list=document.getElementById('list');
+let cur=0,filter='all';
+P.forEach((p,i)=>{const [u,v]=pos(p.x,p.y);const b=document.createElement('button');b.className='hs c-'+p.c;b.style.left=u+'%';b.style.top=v+'%';b.textContent=i+1;b.title=p.r+' · '+p.n;b.setAttribute('aria-label',p.r+' '+p.n);b.onclick=()=>show(i,true);board.appendChild(b);p.el=b;
+ const li=document.createElement('li');li.innerHTML=`<button>${i+1}. <b>${p.r}</b> ${p.n}</button>`;li.querySelector('button').onclick=()=>show(i,true);list.appendChild(li);p.li=li;});
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function show(i,scroll){cur=i;const p=P[i];P.forEach(q=>q.el.classList.remove('sel'));p.el.classList.add('sel');
+ let h=`<div class="ref">${i+1} · ${p.r} · ${CN[p.c]}</div><h2>${esc(p.n)}</h2><p>${esc(p.t)}</p>`;
+ if(p.pins)h+=`<h4>Pines</h4><table>${p.pins.map(x=>`<tr><td><b>${esc(x[0])}</b></td><td>${esc(x[1])}</td></tr>`).join('')}</table>`;
+ if(p.use)h+=`<h4>Cómo se usa</h4><p>${esc(p.use)}</p>`;
+ if(p.warn)h+=`<div class="note red">${esc(p.warn)}</div>`;
+ if(p.go)h+=`<p><button class="btn" data-mod="${p.go}">Ver qué conectar aquí →</button></p>`;
+ h+=`<div class="navbtns"><button id="pv">← Anterior</button><button id="nx">Siguiente →</button></div>`;
+ panel.innerHTML=h;panel.querySelector('#pv').onclick=()=>step(-1);panel.querySelector('#nx').onclick=()=>step(1);
+ const g=panel.querySelector('[data-mod]');if(g)g.onclick=()=>{view('agregar');const t=document.getElementById('m-'+p.go);if(t){t.open=true;t.scrollIntoView({block:'start'});}};
+ if(scroll&&window.innerWidth<=860)panel.scrollIntoView({block:'start'});}
+function vis(p){return filter==='all'||p.c===filter}
+function step(d){let i=cur;for(let k=0;k<P.length;k++){i=(i+d+P.length)%P.length;if(vis(P[i]))break;}show(i,false);}
+document.querySelectorAll('#chips .chip').forEach(c=>c.onclick=()=>{filter=c.dataset.f;document.querySelectorAll('#chips .chip').forEach(x=>x.classList.toggle('on',x===c));
+ P.forEach(p=>{p.el.classList.toggle('dim',!vis(p));p.li.style.display=vis(p)?'':'none'});if(!vis(P[cur])){const j=P.findIndex(vis);if(j>=0)show(j,false);}});
+show(P.findIndex(p=>p.r==='U3'),false);
+
+// ---- modulos ----
+const MODS=[
+ {id:'interruptor',tag:['nec','Necesario'],con:'P2',name:'Interruptor general',
+  da:'Prende y apaga todo el carro sin desconectar la batería.',
+  mod:'Interruptor de palanca SPST de 12 V DC y 20 A, de preferencia con tapa de seguridad (los venden como "tipo misil" o "de avión"). En la tienda pregunta por el valor en DC, no en AC.',
+  how:'Un cable de P2 IN a una pata del interruptor y otro de la otra pata a P2 OUT. Cable de silicón calibre 16 o 18.',
+  warn:'Los interruptores marcan su corriente en AC. En DC aguantan bastante menos. Busca uno que diga explícitamente 12 V DC con 15 A o más.'},
+ {id:'paro',tag:['rec','Recomendado'],con:'J10 · 3 y 4',name:'Paro de emergencia tipo hongo',
+  da:'Corta el motor al instante, aunque el programa esté trabado. Muchos concursos lo piden visible.',
+  mod:'Botón tipo hongo rojo con enclavamiento (se queda abajo y se libera girando) y contacto normalmente cerrado (NC). Para un carro 1:10 busca uno compacto de 16 mm. El LAY37 o XB2 de 22 mm es el más fácil de conseguir, pero su cabeza mide 40 mm.',
+  how:'Contacto NC entre J10 pin 3 y J10 pin 4. En el LAY37 el bloque NC es el verde. Por ese lazo casi no pasa corriente, así que basta cable delgado.',
+  code:`// el firmware de prueba ya trae esta función
+bool paroActivo() {
+  float v = analogReadMilliVolts(39) / 1000.0 * 5.545;
+  return v > 5.0;            // lazo abierto = paro activo
+}`,
+  warn:'No uses el contacto NO. Si lo haces, el paro funcionaría al revés: el motor solo tendría batería con el botón presionado.'},
+ {id:'start',tag:['rec','Recomendado'],con:'J10 · 1 y 2',name:'Botón START externo',
+  da:'Arranca la rutina desde el chasis. En RoboUAQ es obligatorio encender con un solo botón de inicio.',
+  mod:'Push button momentáneo normalmente abierto (NO) de 12 o 16 mm, para tablero.',
+  how:'Entre J10 pin 1 (START) y pin 2 (GND). La resistencia pull-up ya está en la placa.',
+  code:`if (digitalRead(27) == LOW) {   // START presionado
+  // arrancar la rutina
+}`},
+ {id:'i2c',tag:['opc','Según reglas'],con:'J11 / J12',name:'Sensores I2C: cómo se conectan',
+  da:'Dos conectores para colgar sensores y pantalla. Los tres módulos de abajo caben juntos en el mismo bus.',
+  mod:'Cualquier módulo I2C que funcione a 3.3 V.',
+  how:'J11/J12: 1 GND · 2 3.3 V · 3 SDA · 4 SCL. En el módulo busca VCC o VIN, GND, SDA y SCL y haz el cable en ese orden.',
+  code:`#include <Wire.h>
+void setup() {
+  Wire.begin(32, 33);   // SDA, SCL de esta placa
+}`},
+ {id:'imu',tag:['opc','Según reglas'],con:'J11 / J12',name:'IMU (orientación y giro)',
+  da:'Sabe hacia dónde apunta el carro. Sirve para dar vueltas exactas de 90° en una intersección, notar si derrapa y medir rampas. También da datos buenos para el artículo.',
+  mod:'<b>BNO085</b> (módulo GY-BNO085): hace la fusión de sensores adentro y es el que menos se desvía en el giro. Dirección 0x4A o 0x4B.<br><b>Barata:</b> MPU-6050 (GY-521), 0x68. Funciona, pero el ángulo de giro se va corriendo con el tiempo.<br><b>Intermedia:</b> ICM-20948, 0x68 o 0x69.<br>El BNO055 todavía se vende, pero el fabricante ya no lo recomienda para diseños nuevos.',
+  how:'Cable de 4 hilos a J11 o J12. Monta el módulo plano, bien fijo y lejos del motor (su imán afecta la brújula).',
+  code:`#include <Adafruit_BNO08x.h>
+Adafruit_BNO08x imu;
+sh2_SensorValue_t v;
+void setup() {
+  Wire.begin(32, 33);
+  imu.begin_I2C(0x4A, &Wire);
+  imu.enableReport(SH2_GAME_ROTATION_VECTOR);
+}
+void loop() {
+  if (imu.getSensorEvent(&v)) {
+    auto q = v.un.gameRotationVector;
+    float yaw = atan2(2*(q.real*q.k + q.i*q.j),
+                      1 - 2*(q.j*q.j + q.k*q.k)) * 57.3;  // grados
+  }
+}`,
+  warn:'Revisa las reglas. En RoboUAQ 2026 solo se permiten sensores de visión, así que ahí no va.'},
+ {id:'tof',tag:['opc','Según reglas'],con:'J11 / J12',name:'Sensor de distancia láser (ToF)',
+  da:'Mide la distancia al frente. Sirve como freno de seguridad si la cámara no ve un obstáculo, y para pruebas y demostraciones.',
+  mod:'<b>VL53L1X</b>: hasta 4 m y 50 lecturas por segundo. Dirección 0x29.<br><b>Más barato:</b> VL53L0X, hasta 2 m, misma dirección.',
+  how:'Cable de 4 hilos a J11 o J12. Si quieres dos sensores, lleva el pin XSHUT de uno a IO4 o IO5 (J14) para cambiarle la dirección al arrancar.',
+  code:`#include <VL53L1X.h>      // librería de Pololu
+VL53L1X tof;
+void setup() {
+  Wire.begin(32, 33);
+  tof.init();
+  tof.setDistanceMode(VL53L1X::Short);
+  tof.startContinuous(50);
+}
+void loop() {
+  int mm = tof.read();
+  if (mm < 250) { /* frenar */ }
+}`,
+  warn:'Es un sensor que no es de visión. Revisa si tu competencia lo permite.'},
+ {id:'oled',tag:['rec','Recomendado'],con:'J11 / J12',name:'Pantalla OLED',
+  da:'Muestra voltaje de batería, modo, IP de la Jetson o errores sin conectar la laptop. En pits ahorra mucho tiempo.',
+  mod:'OLED de 0.96" 128 × 64, chip SSD1306, versión I2C de 4 pines. Dirección 0x3C.',
+  how:'Cable de 4 hilos a J11 o J12. Funciona a 3.3 V y gasta unos 20 mA.',
+  code:`#include <Adafruit_SSD1306.h>
+Adafruit_SSD1306 oled(128, 64, &Wire, -1);
+void setup() {
+  Wire.begin(32, 33);
+  oled.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+  oled.clearDisplay();
+  oled.setTextColor(SSD1306_WHITE);
+  oled.setCursor(0, 0);
+  oled.print("VBAT 11.8 V  AUTO");
+  oled.display();
+}`,
+  warn:'Unos módulos traen GND primero y otros VCC primero. Lee las letras del módulo antes de crimpar.'},
+ {id:'buzzer',tag:['rec','Recomendado'],con:'J8',name:'Buzzer',
+  da:'Avisa sin mirar: batería baja, paro activado, cuenta regresiva antes de arrancar en automático.',
+  mod:'Buzzer <b>activo</b> de 5 V, de 12 mm, de dos patas (unos 30 mA). Suena solo con darle voltaje. Si lo quieres más fuerte, uno piezo activo de 5 V de unos 85 dB.',
+  how:'Pata + (la larga) al borne +5V de J8 y la otra al borne de salida.',
+  code:`pinMode(13, OUTPUT);
+digitalWrite(13, HIGH);  // suena
+delay(200);
+digitalWrite(13, LOW);`,
+  warn:'No uses un módulo de tres pines: trae su propio transistor y aquí no hace falta. Uno pasivo también suena con tone(), pero más bajito.'},
+ {id:'luces',tag:['opc','Opcional'],con:'J9',name:'Luces (faros y calaveras)',
+  da:'El carro se ve como uno real y puedes indicar el modo. Algunas pruebas urbanas piden luces.',
+  mod:'<b>Opción simple:</b> LEDs de 5 mm, blancos al frente y rojos atrás, cada uno con su resistencia de 470 Ω (unos 18 mA cada uno a 11 V).<br><b>Opción armada:</b> pedazos de tira LED blanca de 12 V (no direccionable).',
+  how:'Todos los positivos al borne VBAT de J9 y todos los negativos al borne de salida, en paralelo.',
+  code:`pinMode(14, OUTPUT);
+digitalWrite(14, HIGH);  // luces encendidas`,
+  warn:'Hasta ~1 A en total. Todas prenden juntas. Prueba si los faros se reflejan en la pista y confunden a la cámara; si pasa, apágalos en modo automático.'},
+ {id:'tira',tag:['rec','Recomendado'],con:'J7',name:'Tira LED RGB direccionable',
+  da:'Cada LED se controla por separado. Sirve para direccionales, luz de freno, color por modo (manual azul, automático verde, paro rojo) o nivel de batería. Puede reemplazar a las luces de J9.',
+  mod:'Tira <b>WS2812B</b> de 5 V, 60 LEDs por metro. Corta de 8 a 16 LEDs.',
+  how:'J7: 1 GND · 2 5 V · 3 DIN. Conecta a la entrada de la tira (la flecha apunta hacia afuera). Si haces dos pedazos, une la salida del primero a la entrada del segundo.',
+  code:`#include <Adafruit_NeoPixel.h>
+Adafruit_NeoPixel tira(16, 26, NEO_GRB + NEO_KHZ800);
+void setup() {
+  tira.begin();
+  tira.setBrightness(60);           // de 255
+  tira.fill(tira.Color(0, 255, 0)); // verde = automático
+  tira.show();
+}`,
+  warn:'Cada LED gasta hasta 60 mA en blanco a todo brillo. Con 16 LEDs y brillo medio vas bien.'},
+ {id:'gpio',tag:['opc','Opcional'],con:'J14',name:'GPIO libres (IO4 e IO5)',
+  da:'Dos pines para lo que salga en cada competencia.',
+  mod:'Ideas: botón para cambiar de modo, LED de estado en el chasis, XSHUT de un segundo sensor ToF, señal para un driver externo.',
+  how:'J14: 1 3.3 V · 2 IO4 · 3 IO5 · 4 GND. Para un botón: entre IO4 y GND, con <code>INPUT_PULLUP</code>.',
+  code:`pinMode(4, INPUT_PULLUP);
+bool modo = digitalRead(4) == LOW;`,
+  warn:'IO5 debe estar en alto al prender o el ESP32 no arranca bien. IO4 no lee analógico con WiFi o Bluetooth. Las señales son de 3.3 V.'},
+ {id:'jp1',tag:['nec','Necesario'],con:'JP1',name:'Jumpers de auto-reset',
+  da:'Programar con un clic, sin presionar botones.',mod:'Dos jumpers de 2.54 mm (los mismos de las tarjetas Arduino).',
+  how:'Uno en cada par de pines de JP1. Quítalos antes de conectar la Jetson por J4.'},
+ {id:'leds',tag:['opc','Info'],con:'D5–D9',name:'Usar el LED HB',
+  da:'Saber de un vistazo si el programa sigue vivo.',mod:'Ya viene en la placa.',how:'GPIO2.',
+  code:`pinMode(2, OUTPUT);
+digitalWrite(2, (millis() / 500) % 2);   // parpadeo cada medio segundo`}
+];
+const mods=document.getElementById('mods');
+mods.innerHTML=MODS.map(m=>`<details id="m-${m.id}"><summary>${m.name} <span class="tag ${m.tag[0]}">${m.tag[1]}</span><span class="tag dt">${m.con}</span></summary>
+ <p><b>Qué te aporta:</b> ${m.da}</p><p><b>Qué comprar:</b> ${m.mod}</p><p><b>Cómo se conecta:</b> ${m.how}</p>
+ ${m.code?`<pre><code>${esc(m.code)}</code></pre>`:''}${m.warn?`<div class="note red">${m.warn}</div>`:''}</details>`).join('');
+
+// ---- compras ----
+const SHOP=[
+ ['Interruptor de palanca 12 V DC 20 A con tapa','interruptor palanca 12v 20a tapa seguridad','P2: encendido general','Necesario'],
+ ['2 jumpers 2.54 mm','jumper 2.54mm','JP1: auto-reset','Necesario'],
+ ['Plug de barril para la Jetson','plug jack dc 5.5x2.5 macho cable','J5: alimentar la Jetson','Necesario'],
+ ['Cable de silicón calibre 16 y 18','cable silicon 16 awg','P2, J5 y batería','Necesario'],
+ ['Botón de paro tipo hongo NC 16 mm','boton paro emergencia 16mm nc enclavamiento','J10: paro','Recomendado'],
+ ['Push button NO 12 mm','push button 12mm normalmente abierto','J10: START','Recomendado'],
+ ['OLED 0.96" SSD1306 I2C','oled 0.96 ssd1306 i2c','J11: pantalla','Recomendado'],
+ ['Buzzer activo 5 V 12 mm','buzzer activo 5v','J8: avisos','Recomendado'],
+ ['Tira WS2812B 5 V 60 LED/m (1 m)','tira ws2812b 60 led 5v','J7: luces y estado','Recomendado'],
+ ['IMU GY-BNO085','bno085','J11: orientación','Opcional'],
+ ['IMU MPU-6050 (barata)','mpu6050 gy-521','J11: orientación','Opcional'],
+ ['Sensor ToF VL53L1X','vl53l1x','J12: distancia','Opcional'],
+ ['LEDs 5 mm blancos y rojos + resistencias 470 Ω','led 5mm blanco alto brillo','J9: faros','Opcional'],
+ ['Fusibles NANO2 10 A rápidos (repuesto)','fusible nano2 10a 451','F1: repuesto','Opcional'],
+];
+let saved={};try{saved=JSON.parse(localStorage.getItem('av2-compras')||'{}')}catch(e){}
+const tb=document.querySelector('#shop tbody');
+tb.innerHTML=SHOP.map((s,i)=>{const q=encodeURIComponent(s[1]);const cls=s[3]==='Necesario'?'nec':s[3]==='Recomendado'?'rec':'opc';
+ return `<tr class="${saved[i]?'done':''}"><td><input type="checkbox" data-i="${i}" ${saved[i]?'checked':''} aria-label="Ya lo tengo"></td><td><b>${s[0]}</b><br><span class="tag ${cls}">${s[3]}</span></td><td><code>${s[1]}</code></td><td>${s[2]}</td>
+ <td><a href="https://listado.mercadolibre.com.mx/${s[1].replace(/\s+/g,'-')}" target="_blank" rel="noopener">Mercado Libre</a><br><a href="https://www.amazon.com.mx/s?k=${q}" target="_blank" rel="noopener">Amazon</a></td></tr>`}).join('');
+tb.addEventListener('change',e=>{const i=e.target.dataset.i;saved[i]=e.target.checked;e.target.closest('tr').classList.toggle('done',e.target.checked);try{localStorage.setItem('av2-compras',JSON.stringify(saved))}catch(err){}});
+
+// ---- pestañas ----
+function view(v){document.querySelectorAll('section.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
+ try{history.replaceState(null,'','#'+v)}catch(e){}window.scrollTo(0,0);}
+document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>view(b.dataset.v));
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>view(b.dataset.go));
+function fromHash(){const h=location.hash.slice(1);if(h&&document.getElementById('v-'+h))view(h);}fromHash();window.addEventListener('hashchange',fromHash);
+</script>
+</body>
+</html>

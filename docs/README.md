@@ -42,6 +42,7 @@ Es la segunda versión. La primera se hizo en KiCad con módulos comerciales (De
 | [BOM completo](hardware/bom.md) | Las 52 líneas con número de parte |
 | [Archivos de diseño](hardware/archivos.md) | Todo lo descargable |
 | [Guía de usuario](guia/README.md) | Cómo conectarla, programarla y probarla |
+| [Manual interactivo](manual.md) | Placa clickeable, qué conectar en cada conector, compras y problemas |
 | [Resultado final](resultado.md) | Fotos de la placa real, revisión de orientación y estado |
 | [Plataforma de documentación](plataforma.md) | Por qué la documentación vive en un repositorio |
 
