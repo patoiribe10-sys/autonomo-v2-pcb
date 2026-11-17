@@ -45,14 +45,15 @@ Las fotos se compararon contra el archivo de la PCB: para cada pieza con polarid
 | C1, C14, C19, C21 | Franja del negativo del lado de GND | Correcto en los cuatro |
 | D1, D2, D10, D11 (SS14) | Banda del cátodo | Correcto |
 | D3, D4 (SK56B) | Banda del cátodo hacia el inductor | Correcto |
+| D12 (TVS) | Banda del cátodo hacia el borde de la placa | Correcto |
 | D14 (zener) | Banda del cátodo hacia VBAT | Correcto |
 | U1, U4, U5, U21, U22, U23, U24 | Marca del pin 1 | Correcto |
 | Q7, Q8 | Marca del pin 1 | Correcto |
 | Conectores JST y borneras | Sentido contra el modelo 3D | Correcto |
 | D5 a D9 (LEDs) | Los cinco van en el mismo sentido | La marca del cátodo no se distingue en la foto |
-| D12, D13 | | No hay acercamiento; no se pudieron revisar |
+| D13 (zener) | | No hay acercamiento y la marca no se distingue |
 
-Al ensamblador se le confirmó que continuara y se le dejó por escrito la regla para lo que no se alcanza a ver: en los LEDs el ánodo va del lado de las resistencias R28 a R32, y en D12 y D13 la banda del cátodo va hacia el punto blanco de la serigrafía.
+Al ensamblador se le confirmó que continuara y se le dejó por escrito la regla para lo que no se alcanza a ver: en los LEDs el ánodo va del lado de las resistencias R28 a R32, y en D13 la banda del cátodo va hacia el punto blanco de la serigrafía.
 
 Es una revisión de fotos. Sirve para descartar piezas al revés, no para saber si la placa funciona.
 
