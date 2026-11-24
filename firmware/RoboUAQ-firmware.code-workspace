@@ -1,0 +1,31 @@
+{
+  "folders": [
+    { "name": "Prueba PCB", "path": "prueba-pcb" },
+    { "name": "Plantilla", "path": "plantilla" }
+  ],
+  "settings": {
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontSize": 15,
+    "editor.minimap.enabled": false,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active",
+    "editor.stickyScroll.enabled": true,
+    "files.autoSave": "afterDelay",
+    "files.exclude": { "**/.pio": true },
+    "errorLens.enabledDiagnosticLevels": ["error", "warning"],
+    "platformio-ide.autoOpenPlatformIOIniFile": false,
+    "platformio-ide.activateOnlyOnPlatformIOProject": true,
+    "terminal.integrated.fontSize": 14
+  },
+  "extensions": {
+    "recommendations": [
+      "platformio.platformio-ide",
+      "ms-vscode.cpptools",
+      "catppuccin.catppuccin-vsc",
+      "pkief.material-icon-theme",
+      "usernamehw.errorlens",
+      "ms-ceintl.vscode-language-pack-es"
+    ]
+  }
+}
