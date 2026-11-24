@@ -7,6 +7,9 @@
     {
       "name": "Plantilla",
       "path": "plantilla"
+    },
+    {
+      "path": "prueba-usb"
     }
   ],
   "settings": {

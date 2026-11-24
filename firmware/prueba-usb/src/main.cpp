@@ -40,9 +40,9 @@ void ayuda() {
 
 void info() {
   Serial.println(F("[info]"));
-  Serial.printf("  Chip: %s rev %d, %d nucleos a %d MHz\n", ESP.getChipModel(), ESP.getChipRevision(), ESP.getChipCores(), ESP.getCpuFreqMHz());
-  Serial.printf("  Flash: %u MB\n", ESP.getFlashChipSize() / (1024 * 1024));
-  Serial.printf("  RAM libre: %u bytes\n", ESP.getFreeHeap());
+  Serial.printf("  Chip: %s rev %d, %d nucleos a %lu MHz\n", ESP.getChipModel(), ESP.getChipRevision(), ESP.getChipCores(), (unsigned long)ESP.getCpuFreqMHz());
+  Serial.printf("  Flash: %lu MB\n", (unsigned long)(ESP.getFlashChipSize() / (1024 * 1024)));
+  Serial.printf("  RAM libre: %lu bytes\n", (unsigned long)ESP.getFreeHeap());
   uint64_t mac = ESP.getEfuseMac();
   Serial.printf("  MAC: %02X:%02X:%02X:%02X:%02X:%02X\n",
                 (uint8_t)(mac), (uint8_t)(mac >> 8), (uint8_t)(mac >> 16),
@@ -61,7 +61,7 @@ void procesarLinea(String s) {
     else { ledManual = false; Serial.println(F("[LED en automatico]")); }
     return;
   }
-  Serial.printf("[eco] Recibi %u caracteres: %s\n", s.length(), s.c_str());
+  Serial.printf("[eco] Recibi %u caracteres: %s\n", (unsigned)s.length(), s.c_str());
 }
 
 void setup() {

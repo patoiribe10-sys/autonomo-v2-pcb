@@ -1,10 +1,24 @@
 # Resultado final
 
+## La placa terminada (23 de noviembre de 2026)
+
+![La placa terminada, cara superior](../assets/img/foto-final-superior.jpg "Figura 1. La placa terminada, con todos los componentes soldados. Fotografía propia, 23 de noviembre de 2026.")
+
+La placa llegó antes de lo previsto, con todo soldado. La primera prueba se hizo solo con el cable USB-C, sin batería, usando el programa `firmware/prueba-usb`:
+
+- El ESP32 arranca y corre el programa.
+- El convertidor USB (CH340C) pasa datos en los dos sentidos. La placa manda un mensaje por segundo y regresa lo que se le escribe.
+- El regulador de 3.3 V funciona (LED 3V3 encendido).
+- Los botones EN, BOOT y START responden, y el LED HB lo controla el programa.
+- El ESP32 se programa entrando a mano al modo de carga (BOOT y EN), sin los jumpers de JP1.
+
+Las soldaduras through-hole se revisaron por la cara inferior: no hay puentes ni pines sin soldar. Las cuatro patas del casco del USB-C quedaron sin soldadura; no afecta lo eléctrico, pero se va a revisar si conviene reforzarlas.
+
 ## Estado al 16 de noviembre de 2026
 
 La placa ya existe. Está en la línea de ensamblaje de PCBWay con los componentes de montaje superficial soldados y los through-hole colocados. El 16 de noviembre el ensamblador mandó fotos para confirmar la orientación de las piezas con polaridad antes de terminar de soldar, recortar terminales y limpiar.
 
-![Fotografía de la placa ensamblada](../assets/img/foto-superior.jpg "Figura 1. La placa durante el ensamblaje, cara superior. Fotografía del ensamblador, 16 de noviembre de 2026.")
+![Fotografía de la placa ensamblada](../assets/img/foto-superior.jpg "La placa durante el ensamblaje, cara superior. Fotografía del ensamblador, 16 de noviembre de 2026.")
 
 | Fecha | Avance |
 |---|---|
@@ -12,7 +26,7 @@ La placa ya existe. Está en la línea de ensamblaje de PCBWay con los component
 | 30 de octubre a 3 de noviembre | Cotización, dudas del fabricante resueltas y pago del pedido |
 | 7 de noviembre | Placas fabricadas y con prueba eléctrica |
 | 16 de noviembre | Componentes montados; fotos de revisión y orientación confirmada |
-| Mediados de diciembre | Llegada estimada |
+| 23 de noviembre | Placa recibida; primera prueba por USB sin batería |
 
 El pedido es de cinco placas, dos de ellas ensambladas con todos los componentes, incluidos los through-hole.
 
@@ -62,6 +76,7 @@ Es una revisión de fotos. Sirve para descartar piezas al revés, no para saber 
 - El fabricante aceptó los archivos y el BOM completo, y las placas desnudas pasaron su prueba eléctrica.
 - La placa ensamblada coincide con el modelo y las piezas con polaridad que se ven en las fotos están bien orientadas.
 - El firmware de prueba compila y el plan de pruebas está escrito.
+- La parte lógica funciona con USB: ESP32, convertidor USB, regulador de 3.3 V, botones y LED HB.
 
 ## Lo que falta comprobar
 
