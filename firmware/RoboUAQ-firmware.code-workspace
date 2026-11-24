@@ -1,7 +1,13 @@
 {
   "folders": [
-    { "name": "Prueba PCB", "path": "prueba-pcb" },
-    { "name": "Plantilla", "path": "plantilla" }
+    {
+      "name": "Prueba PCB",
+      "path": "prueba-pcb"
+    },
+    {
+      "name": "Plantilla",
+      "path": "plantilla"
+    }
   ],
   "settings": {
     "workbench.colorTheme": "Catppuccin Mocha",
@@ -12,11 +18,17 @@
     "editor.guides.bracketPairs": "active",
     "editor.stickyScroll.enabled": true,
     "files.autoSave": "afterDelay",
-    "files.exclude": { "**/.pio": true },
-    "errorLens.enabledDiagnosticLevels": ["error", "warning"],
+    "files.exclude": {
+      "**/.pio": true
+    },
+    "errorLens.enabledDiagnosticLevels": [
+      "error",
+      "warning"
+    ],
     "platformio-ide.autoOpenPlatformIOIniFile": false,
     "platformio-ide.activateOnlyOnPlatformIOProject": true,
-    "terminal.integrated.fontSize": 14
+    "terminal.integrated.fontSize": 14,
+    "git.openRepositoryInParentFolders": "always"
   },
   "extensions": {
     "recommendations": [
