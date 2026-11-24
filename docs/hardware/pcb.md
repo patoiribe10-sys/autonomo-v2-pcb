@@ -86,10 +86,11 @@ El DRC final (29 de octubre de 2026) reporta **0 violaciones y 0 advertencias** 
 
 ## Lo que preguntó el fabricante
 
-Antes de producir, PCBWay pidió confirmar dos cosas del diseño:
+PCBWay pidió confirmar tres cosas, dos antes de producir y una durante el ensamblaje:
 
 - **Máscara entre los pines del USB-C.** La separación entre esos pads es de 0.2 mm y la tinta negra necesita 0.22 mm para dejar un puente de máscara. Se mantuvo el color negro y esa fila va sin puente; al recibir la placa hay que revisarla con lupa.
 - **Ranuras del XT60.** Las dos ranuras metalizadas de las patas eran rectangulares de 0.6 mm y se fabrican ovaladas del mismo tamaño.
+- **Orientación de las piezas con polaridad.** Antes del soldado final mandaron fotos para confirmar los capacitores electrolíticos y los LEDs. Se revisaron contra el diseño y están bien; el detalle está en [Resultado final](../resultado.md).
 
 ## Pendientes para una v3
 

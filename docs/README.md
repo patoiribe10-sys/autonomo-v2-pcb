@@ -9,7 +9,7 @@ La Autonomo_V2 es la placa de control del carro autónomo a escala 1:10 con el q
 
 Es la segunda versión. La primera se hizo en KiCad con módulos comerciales (DevKit del ESP32, convertidores XL4016 y Mini560) y se soldó a mano. Esta se diseñó en Altium Designer con todo integrado en la misma placa y se mandó a fabricar ya ensamblada.
 
-![Vista superior de la PCB Autonomo_V2](../assets/img/pcb-vista-superior.png "Figura 1. Vista superior del modelo 3D de la placa. Todo el montaje va de este lado.")
+![La PCB Autonomo_V2 ensamblada](../assets/img/foto-superior.jpg "Figura 1. La placa durante el ensamblaje (fotografía del ensamblador, 16 de noviembre de 2026). Todo el montaje va de este lado.")
 
 ## Datos generales
 
@@ -42,7 +42,8 @@ Es la segunda versión. La primera se hizo en KiCad con módulos comerciales (De
 | [BOM completo](hardware/bom.md) | Las 52 líneas con número de parte |
 | [Archivos de diseño](hardware/archivos.md) | Todo lo descargable |
 | [Guía de usuario](guia/README.md) | Cómo conectarla, programarla y probarla |
-| [Resultado final](resultado.md) | Estado de la fabricación y fotos |
+| [Manual interactivo](manual.md) | Placa clickeable, qué conectar en cada conector, compras y problemas |
+| [Resultado final](resultado.md) | Fotos de la placa real, revisión de orientación y estado |
 | [Plataforma de documentación](plataforma.md) | Por qué la documentación vive en un repositorio |
 
 ## Qué cambió respecto a la primera versión
@@ -60,7 +61,7 @@ La v1 funcionó, pero dejó una lista de problemas que esta placa corrige:
 
 ## Estado
 
-El diseño se cerró el 29 de octubre de 2026 con el DRC en cero. El pedido a PCBWay (5 placas, 2 ensambladas) se pagó el 3 de noviembre; las placas desnudas salieron de fabricación el 7 y el ensamblaje está en curso. Llegan a mediados de diciembre. Las pruebas eléctricas se van a documentar en [Resultado final](resultado.md).
+El diseño se cerró el 29 de octubre de 2026 con el DRC en cero. El pedido a PCBWay (5 placas, 2 ensambladas) se pagó el 3 de noviembre; las placas desnudas salieron de fabricación el 7. El 16 de noviembre el ensamblador mandó fotos de la placa con los componentes montados y se le confirmó la orientación. Llegan a mediados de diciembre. Las fotos están en [Resultado final](resultado.md), y ahí mismo se van a documentar las pruebas eléctricas.
 
 ## Créditos
 
