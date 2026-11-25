@@ -58,7 +58,7 @@ y abre `http://localhost:8000`.
 
 ## Estado
 
-Placa recibida el 23 de noviembre de 2026. La parte lógica ya se probó por USB (ESP32, convertidor USB, 3.3 V, botones y LED). Falta la prueba con batería. Fotos y resultados en [docs/resultado.md](docs/resultado.md).
+Placa recibida el 23 de noviembre de 2026 y montada en el carro. Ya se probó por USB y con batería: los cuatro reguladores dan su voltaje, y el motor, el servo, el encoder y el paro funcionan. Falta la prueba con la Jetson. Fotos y mediciones en [docs/resultado.md](docs/resultado.md).
 
 ## Licencia
 

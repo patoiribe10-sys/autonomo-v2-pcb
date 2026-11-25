@@ -12,7 +12,32 @@ La placa llegó antes de lo previsto, con todo soldado. La primera prueba se hiz
 - Los botones EN, BOOT y START responden, y el LED HB lo controla el programa.
 - El ESP32 se programa entrando a mano al modo de carga (BOOT y EN), sin los jumpers de JP1.
 
-Las soldaduras through-hole se revisaron por la cara inferior: no hay puentes ni pines sin soldar. Las cuatro patas del casco del USB-C quedaron sin soldadura; no afecta lo eléctrico, pero se va a revisar si conviene reforzarlas.
+Las soldaduras through-hole se revisaron por la cara inferior: no hay puentes ni pines sin soldar. Las cuatro patas del casco del USB-C quedaron sin soldadura. No afecta lo eléctrico y, según la revisión del profesor, el conector queda bien sujeto así, por lo que no se refuerza.
+
+## Prueba con batería (25 de noviembre de 2026)
+
+Con la batería LiPo 3S cargada y balanceada (4.14 V por celda) y la placa ya montada en el carro, se encendió con el interruptor en P2 y un puente en el lazo del paro (J10, pines 3 y 4). Prendieron los cuatro LEDs de los rieles y nada se calentó.
+
+**Tabla 1.** Voltajes medidos con multímetro.
+
+| Riel | Dónde se midió | Medido | Diseño |
+|---|---|---|---|
+| Batería (VBAT) | Test point VBAT | 12.4 V | 11.1–12.6 V |
+| 3.3 V | Test point 3V3 | 3.3 V | 3.3 V |
+| 5 V lógica | Test point 5V | 5.0 V | 5.0 V |
+| Servo | J3, pin 2 | 5.04 V | ≈ 5.2 V |
+| Jetson | J5, pin 1 | 9.8 V | 10 V (la Jetson acepta de 9 a 20 V) |
+
+Después se cargó el programa `firmware/demo-recorrido`, que al presionar START hace un recorrido corto (acelera, sigue recto, gira a la izquierda, gira a la derecha y vuelve a recto) y se detiene con BOOT o al abrir el paro. Se probó con las ruedas al aire y en el piso:
+
+- El puente H mueve el motor a cualquier velocidad, desde cero hasta el PWM máximo. La falla de STBY de la v1 ya no aparece.
+- El servo llega a sus topes calibrados (1190, 1360 y 1730 µs) con su riel propio, sin reiniciar al ESP32.
+- START, BOOT y el paro por hardware detienen y arrancan el carro como se diseñó.
+- El encoder cuenta de forma estable durante todo el recorrido.
+- Con más de 10 minutos encendida y dos corridas, los reguladores y el puente H siguen fríos al tacto.
+- La programación con los dos jumpers de JP1 entra sola a modo de carga.
+
+El carro avanza lento aun con el PWM al máximo. La lectura del encoder indica que el motor de tracción gira muy por debajo de lo esperado para su voltaje; tiene varios años de uso y el equipo lo va a sustituir. No es un problema de la placa.
 
 ## Estado al 16 de noviembre de 2026
 
@@ -27,6 +52,7 @@ La placa ya existe. Está en la línea de ensamblaje de PCBWay con los component
 | 7 de noviembre | Placas fabricadas y con prueba eléctrica |
 | 16 de noviembre | Componentes montados; fotos de revisión y orientación confirmada |
 | 23 de noviembre | Placa recibida; primera prueba por USB sin batería |
+| 25 de noviembre | Prueba con batería: rieles medidos, motor, servo y paro funcionando en el carro |
 
 El pedido es de cinco placas, dos de ellas ensambladas con todos los componentes, incluidos los through-hole.
 
@@ -52,7 +78,7 @@ La placa salió igual al modelo: mismas posiciones, misma serigrafía y los cone
 
 Las fotos se compararon contra el archivo de la PCB: para cada pieza con polaridad se tomó de qué lado queda cada red en el diseño y se buscó la marca correspondiente en la fotografía.
 
-**Tabla 1.** Resultado de la revisión visual.
+**Tabla 2.** Resultado de la revisión visual.
 
 | Piezas | Qué se revisó | Resultado |
 |---|---|---|
@@ -77,20 +103,19 @@ Es una revisión de fotos. Sirve para descartar piezas al revés, no para saber 
 - La placa ensamblada coincide con el modelo y las piezas con polaridad que se ven en las fotos están bien orientadas.
 - El firmware de prueba compila y el plan de pruebas está escrito.
 - La parte lógica funciona con USB: ESP32, convertidor USB, regulador de 3.3 V, botones y LED HB.
+- Los cuatro reguladores dan el voltaje de diseño con la batería y no se calientan.
+- El puente H, el servo, el encoder y el paro por hardware funcionan con la placa montada en el carro.
 
 ## Lo que falta comprobar
 
-Nada de lo siguiente está medido todavía:
-
-- Voltajes reales de los cuatro rieles, con y sin carga.
-- Estabilidad y rizado de los reguladores de 10 V y del servo.
-- Comunicación por UART con la Jetson, que fue la falla principal de la v1.
-- Comportamiento térmico con el carro en movimiento.
+- La Jetson alimentada desde J5 y la comunicación con el ESP32, que fue la falla principal de la v1.
+- Estabilidad y rizado de los reguladores de 10 V y del servo con osciloscopio.
+- Voltajes con la Jetson y el servo trabajando al mismo tiempo.
+- Comportamiento térmico en recorridos largos.
 - Alcance del Bluetooth con la placa montada.
-- Los pines del USB-C, que van sin puente de máscara y hay que ver con lupa.
 
-Cuando la placa llegue se seguirá el [plan de pruebas](guia/pruebas.md) y esta página se actualiza con la tabla de mediciones y las correcciones que hagan falta.
+Se sigue el [plan de pruebas](guia/pruebas.md) y esta página se actualiza con cada resultado.
 
 ## Carro donde se va a montar
 
-La placa sustituye a la v1 en el carro a escala 1:10 del equipo, junto a la Jetson Orin Nano y las dos cámaras. El soporte se fabrica a partir del [plano mecánico](../hardware/Plano_PCB_Autonomo_V2_soporte.pdf).
+La placa ya sustituyó a la v1 en el carro a escala 1:10 del equipo, junto a la Jetson Orin Nano y las dos cámaras. El soporte se fabrica a partir del [plano mecánico](../hardware/Plano_PCB_Autonomo_V2_soporte.pdf).
