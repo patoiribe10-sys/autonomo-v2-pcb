@@ -16,7 +16,7 @@ Está en [`firmware/prueba-pcb/`](https://github.com/patoiribe10-sys/autonomo-v2
 | 3 | START y paro | Mensajes al presionar START y al abrir o cerrar el lazo |
 | 4 | Motor y encoder | Rampa hacia adelante y hacia atrás, con el conteo del encoder |
 | 5 | Encoder a mano | Pulsos al girar la llanta |
-| 6 | Servo | Centro, izquierda, centro, derecha (1360, 1100 y 1730 µs) |
+| 6 | Servo | Centro, izquierda, centro, derecha (1360, 1190 y 1730 µs) |
 | 7 | Buzzer | Tres pitidos |
 | 8 | Luces | Tres encendidos de un segundo |
 | 9 | Tira LED | Rojo, verde, azul y blanco |

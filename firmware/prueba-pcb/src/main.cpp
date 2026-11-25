@@ -39,7 +39,7 @@
 // ---------- Ajustes ----------
 const float DIVISOR      = (100.0f + 22.0f) / 22.0f;  // R1/R2 y R43/R44
 const int   MOTOR_PWM_MAX = 150;      // de 255, para la prueba
-const int   SERVO_MIN = 1100, SERVO_CENTRO = 1360, SERVO_MAX = 1730;  // calibración del carro
+const int   SERVO_MIN = 1190, SERVO_CENTRO = 1360, SERVO_MAX = 1730;  // calibración del carro
 const int   NUM_LEDS  = 8;            // LEDs de la tira que conectes en J7
 
 Servo servoDir;

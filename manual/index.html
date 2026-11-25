@@ -197,7 +197,7 @@ details[open] summary{margin-bottom:8px}
   <div class="card"><span class="tag dt">J3 · XH 3 pines</span><h3>Servo MG995 (dirección Ackermann)</h3>
    <p>Recibe 5.2 V de un regulador solo para él. Así sus picos no reinician al ESP32.</p>
    <div class="pins"><span class="pin"><b>1</b>GND (café)</span><span class="pin"><b>2</b>5.2 V (rojo)</span><span class="pin"><b>3</b>señal (naranja)</span></div>
-   <p><b>Calibración del carro:</b> 1100 µs izquierda, 1360 µs centro, 1730 µs derecha. Señal en GPIO25, pasa por un buffer a 5 V.</p>
+   <p><b>Calibración del carro:</b> 1190 µs izquierda, 1360 µs centro, 1730 µs derecha. Señal en GPIO25, pasa por un buffer a 5 V.</p>
    <p><b>Límite:</b> el regulador da hasta 5 A. El MG995 pide 2.5 a 3 A de pico.</p></div>
   <div class="card"><span class="tag pw">J5</span> <span class="tag dt">J4</span><h3>Jetson Orin Nano</h3>
    <p>Es la computadora que ve con las cámaras y decide. Las cámaras y el control de Xbox se conectan a la Jetson, no a esta placa.</p>
@@ -347,7 +347,7 @@ if (vbat &lt; 10.8) digitalWrite(13, HIGH);   // buzzer: batería baja</code></p
   <li>Prueba con la opción 4 del firmware de prueba, con las ruedas al aire.</li></ol></details>
  <details><summary>La Jetson o el ESP32 se reinician</summary><ol>
   <li>Batería baja. Por debajo de unos 10.5 V la Jetson ya no recibe 10 V.</li>
-  <li>El servo se traba contra el tope y jala mucha corriente. Ajusta los límites de 1100 y 1730 µs.</li>
+  <li>El servo se traba contra el tope y jala mucha corriente. Ajusta los límites de 1190 y 1730 µs.</li>
   <li>Si el ESP32 se reinicia al abrir el puerto desde la Jetson, quita los jumpers de JP1.</li></ol></details>
  <details><summary>No puedo programar el ESP32</summary><ol>
   <li>Instala el driver del CH340 en la computadora.</li>

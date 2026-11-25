@@ -25,4 +25,4 @@
 #define PIN_MOT_PWM     23   // TB6612 PWMA/PWMB
 
 const float VBAT_DIVISOR = (100.0f + 22.0f) / 22.0f;
-const int SERVO_MIN = 1100, SERVO_CENTRO = 1360, SERVO_MAX = 1730;  // calibracion del carro
+const int SERVO_MIN = 1190, SERVO_CENTRO = 1360, SERVO_MAX = 1730;  // calibracion del carro
