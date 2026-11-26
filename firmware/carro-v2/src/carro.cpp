@@ -154,7 +154,8 @@ void carro_paso(Carro *c) {
     char s[48];
     int n = protocolo_telemetria(s, sizeof(s), c->enc.pulsos_s, direccion_pct_actual(&c->dir),
                                  bateria_mv_reportado(&c->bat), c->estado);
-    if (n > 0) c->cmd.puerto->write((const uint8_t *)s, n);
+    // snprintf regresa lo que HABRIA escrito: si no cupo, no mandamos una linea cortada
+    if (n > 0 && n < (int)sizeof(s)) c->cmd.puerto->write((const uint8_t *)s, n);
   }
 
   indicadores(c, ahora);
