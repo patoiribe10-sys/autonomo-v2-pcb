@@ -18,7 +18,7 @@
 #define RAMPA_PASO_MS      10      // cada cuanto se da un paso (8/10 ms = 0 a 255 en ~0.3 s)
 
 // ---------- Direccion (servo) ----------
-#define SERVO_VEL_US_S     1500.0f // velocidad maxima del servo en us por segundo
+#define SERVO_VEL_US_S     3500.0f // velocidad maxima del servo en us por segundo (era 1500; el MG995 recorre todo el rango en ~0.15 s)
 
 // ---------- Encoder ----------
 #define ENC_VENTANA_MS     50      // cada cuanto se calculan los pulsos/s

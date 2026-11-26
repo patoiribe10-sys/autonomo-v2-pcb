@@ -5,7 +5,7 @@ Firmware del ESP32 del carro (PCB Autonomo_V2). La Jetson le manda velocidad y d
 | Módulo | Qué hace |
 |---|---|
 | `motor` | Puente H, PWM de 8 bits, rampa de aceleración y zona muerta |
-| `direccion` | Servo con movimiento suave y límites 1190 / 1360 / 1730 µs |
+| `direccion` | Servo con movimiento suave y límites 1190 / 1360 / 1680 µs |
 | `encoder` | Cuadratura por interrupción, pulsos/s cada 50 ms |
 | `protocolo` | Lee `V..,S..`, `P` y `?`; arma la telemetría |
 | `seguridad` | Bateria, paro de emergencia y botones |

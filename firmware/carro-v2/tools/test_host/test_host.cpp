@@ -5,16 +5,16 @@
 static int fallas = 0, total = 0;
 #define CHECK(nombre, cond) do { total++; if (cond) printf("[OK ] %s\n", nombre); else { fallas++; printf("[FALLA] %s\n", nombre); } } while (0)
 int main() {
-  // ---- servo: porcentaje -> microsegundos (S+ = derecha = 1730)
-  CHECK("S=+100  -> 1730 us (derecha total)",  direccion_pct_a_us(100)  == 1730);
+  // ---- servo: porcentaje -> microsegundos (S+ = derecha = 1680)
+  CHECK("S=+100  -> 1680 us (derecha total)",  direccion_pct_a_us(100)  == 1680);
   CHECK("S=0     -> 1360 us (centro)",         direccion_pct_a_us(0)    == 1360);
   CHECK("S=-100  -> 1190 us (izquierda total)", direccion_pct_a_us(-100) == 1190);
-  CHECK("S=+50   -> 1545 us",                  direccion_pct_a_us(50)   == 1545);
+  CHECK("S=+50   -> 1520 us",                  direccion_pct_a_us(50)   == 1520);
   CHECK("S=-50   -> 1275 us",                  direccion_pct_a_us(-50)  == 1275);
-  CHECK("S=+999  se recorta a 1730 (nunca mas)", direccion_pct_a_us(999)  == 1730);
+  CHECK("S=+999  se recorta a 1680 (nunca mas)", direccion_pct_a_us(999)  == 1680);
   CHECK("S=-999  se recorta a 1190 (nunca 1100)", direccion_pct_a_us(-999) == 1190);
-  for (int p = -100; p <= 100; p++) { int us = direccion_pct_a_us(p); if (us < 1190 || us > 1730) { CHECK("rango 1190..1730 para todo S", false); return 1; } }
-  CHECK("para todo S de -100 a 100 el servo queda en 1190..1730 (nunca 1100)", true);
+  for (int p = -100; p <= 100; p++) { int us = direccion_pct_a_us(p); if (us < 1190 || us > 1680) { CHECK("rango 1190..1680 para todo S", false); return 1; } }
+  CHECK("para todo S de -100 a 100 el servo queda en 1190..1680 (nunca 1100)", true);
   // ---- protocolo: lineas validas e invalidas
   Comando c; memset(&c, 0, sizeof(c)); c.vel = 7; c.dir = 9;
   struct { const char *l; TipoLinea t; int vel, dir; } casos[] = {
