@@ -27,7 +27,7 @@ v<pulsos/s>,s<dir>,b<mV bateria>,e<estado>
 
 `e` vale 0 ok, 1 paro de emergencia, 2 timeout, 3 batería baja o crítica. Si hay varios a la vez gana este orden: paro, batería crítica, timeout, batería baja. Con la placa solo por USB reporta `b0`.
 
-El ESP32 escucha por USB (`/dev/ttyUSB0`) y por UART2 (J4, RX16/TX17) al mismo tiempo, y contesta por el puerto del último comando válido. Antes del primer comando contesta por USB.
+El ESP32 escucha por USB (`/dev/esp32`, que apunta a `/dev/ttyUSB0`) y por UART2 (J4, RX16/TX17) al mismo tiempo, y contesta por el puerto del último comando válido. Antes del primer comando contesta por USB.
 
 ## Seguridad
 
@@ -40,10 +40,12 @@ El ESP32 escucha por USB (`/dev/ttyUSB0`) y por UART2 (J4, RX16/TX17) al mismo t
 
 ## Cómo probarlo desde la Jetson
 
-1. Compila y sube desde tu laptop (`pio run -t upload`). Ruedas al aire la primera vez.
+1. Compila y sube. Ruedas al aire la primera vez.
+   - **Laptop (Windows):** botón Upload de VS Code o `pio run -t upload`. Usa el entorno `esp32doit-devkit-v1` (el de por defecto) y detecta el puerto solo.
+   - **Jetson:** `pio run -e jetson -t upload` y, para ver el serial, `pio device monitor -e jetson`. El entorno `jetson` es el mismo pero con `upload_port` y `monitor_port` en `/dev/esp32`. Cierra cualquier monitor antes de subir.
 2. Copia `tools/prueba_serial.py` a la Jetson (necesita `pyserial`).
 3. Corre `python3 prueba_serial.py --solo-direccion` para ver solo el servo. Sin la bandera también mueve el motor a 25% por 2 s.
-4. A mano: `python3 -m serial.tools.miniterm --dtr 0 --rts 0 /dev/ttyUSB0 115200`, escribes `P` y debe contestar `pong`.
+4. A mano: `python3 -m serial.tools.miniterm --dtr 0 --rts 0 /dev/esp32 115200`, escribes `P` y debe contestar `pong`.
 
 Siempre abre el puerto con `dsrdtr=False, rtscts=False` (y DTR/RTS apagados) o el CH340 reinicia al ESP32.
 

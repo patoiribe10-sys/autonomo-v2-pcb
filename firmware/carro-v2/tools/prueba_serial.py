@@ -2,7 +2,7 @@
 """Prueba segura del firmware carro-v2 desde la Jetson.
 
 Uso:
-    python3 prueba_serial.py                      # /dev/ttyUSB0, con motor
+    python3 prueba_serial.py                      # /dev/esp32, con motor
     python3 prueba_serial.py /dev/ttyUSB1
     python3 prueba_serial.py --solo-direccion     # no mueve el motor
 
@@ -53,7 +53,7 @@ def mantener(ser, t0, vel, dir_, segundos, texto):
 
 def main():
     ap = argparse.ArgumentParser(description="Prueba serial del carro-v2")
-    ap.add_argument("puerto", nargs="?", default="/dev/ttyUSB0")
+    ap.add_argument("puerto", nargs="?", default="/dev/esp32")
     ap.add_argument("--solo-direccion", action="store_true", help="no mueve el motor")
     args = ap.parse_args()
 
