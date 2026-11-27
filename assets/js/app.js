@@ -75,6 +75,7 @@ async function load() {
   el.innerHTML = marked.parse(md, { gfm: true });
   // rutas relativas al .md
   el.querySelectorAll('img').forEach(i => { i.src = resolve(path, i.getAttribute('src')); i.loading = 'lazy'; });
+  el.querySelectorAll('video').forEach(v => { ['src', 'poster'].forEach(k => { const x = v.getAttribute(k); if (x) v.setAttribute(k, resolve(path, x)); }); });
   el.querySelectorAll('a').forEach(a => {
     const h = a.getAttribute('href') || '';
     if (/^(https?:|mailto:)/.test(h)) { a.target = '_blank'; a.rel = 'noopener'; return; }
