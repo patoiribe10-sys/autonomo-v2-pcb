@@ -43,7 +43,7 @@ El carro avanza lento aun con el PWM al máximo. La lectura del encoder indica q
 
 Esta es la prueba que pide el curso: la placa moviendo el carro con un control remoto, con la imagen de la cámara a la vista desde otra computadora.
 
-<video controls playsinline width="360" poster="../assets/img/prueba-control-remoto.jpg" src="../assets/video/prueba-control-remoto.mp4"></video>
+<video controls playsinline width="360" poster="https://patoiribe10-sys.github.io/autonomo-v2-pcb/assets/img/prueba-control-remoto.jpg" src="https://patoiribe10-sys.github.io/autonomo-v2-pcb/assets/video/prueba-control-remoto.mp4"></video>
 
 **Video 1.** El carro manejado en el piso con el control de Xbox, alimentado solo con su batería. Si el video no se reproduce, se puede [descargar aquí](../assets/video/prueba-control-remoto.mp4).
 
