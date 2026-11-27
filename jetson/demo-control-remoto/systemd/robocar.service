@@ -1,0 +1,41 @@
+# robocar.service: al prender la Jetson levanta el control de Xbox y la web de las camaras, sin entrar por SSH.
+# Instalar:  sudo cp ~/robocar_ws/systemd/robocar.service /etc/systemd/system/ && sudo systemctl daemon-reload
+#            sudo systemctl enable --now robocar        (ver los comandos completos en CLAUDE.md)
+[Unit]
+Description=Carro RoboUAQ: control de Xbox + camaras por web (ROS 2 launch)
+Documentation=file:///home/patoih/robocar_ws/CLAUDE.md
+# Orden: despues de la red, el Bluetooth y el demonio de las camaras. Son SOLO de orden (After), no de dependencia
+# fuerte: si Bluetooth o la red fallan, el carro igual debe arrancar. La espera con tope (red, Bluetooth y
+# /dev/esp32) la hace scripts/arranque_carro.sh.
+After=network.target NetworkManager.service bluetooth.service nvargus-daemon.service
+Wants=bluetooth.service
+# Sin limite de reinicios (con RestartSec no hay bucle ansioso).
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=patoih
+Group=patoih
+# El control (/dev/input), las camaras (/dev/video*, argus) y el puerto serie: por grupo, sin depender de que
+# haya una sesion grafica abierta.
+SupplementaryGroups=input video bluetooth dialout
+WorkingDirectory=/home/patoih/robocar_ws
+ExecStart=/home/patoih/robocar_ws/scripts/arranque_carro.sh
+
+# Si se cae (codigo distinto de 0 o una senal), se reinicia a los 5 s. Un "systemctl stop" NO cuenta como falla.
+Restart=on-failure
+RestartSec=5
+
+# Parar: Ctrl+C a ros2 launch (cierre ordenado: el puente se despide con V0,S0), con 25 s de tope; lo que
+# quede vivo despues se mata.
+KillSignal=SIGINT
+KillMode=mixed
+TimeoutStopSec=25
+
+# Logs en el journal:  journalctl -u robocar -f
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=robocar
+
+[Install]
+WantedBy=multi-user.target

@@ -58,7 +58,7 @@ y abre `http://localhost:8000`.
 
 ## Estado
 
-Placa recibida el 23 de noviembre de 2026 y montada en el carro. Ya se probó por USB y con batería: los cuatro reguladores dan su voltaje, y el motor, el servo, el encoder y el paro funcionan. Falta la prueba con la Jetson. Fotos y mediciones en [docs/resultado.md](docs/resultado.md).
+Placa recibida el 23 de noviembre de 2026 y montada en el carro. Ya se probó por USB y con batería: los cuatro reguladores dan su voltaje, y el motor, el servo, el encoder y el paro funcionan. El 26 de noviembre se probó con la Jetson: la placa la alimenta, se comunican por USB y el carro se maneja con un control de Xbox viendo la cámara en el navegador (hay video). Fotos, mediciones y video en [docs/resultado.md](docs/resultado.md).
 
 ## Licencia
 

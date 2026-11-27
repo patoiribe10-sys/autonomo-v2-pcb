@@ -39,6 +39,55 @@ Después se cargó el programa `firmware/demo-recorrido`, que al presionar START
 
 El carro avanza lento aun con el PWM al máximo. La lectura del encoder indica que el motor de tracción gira muy por debajo de lo esperado para su voltaje; tiene varios años de uso y el equipo lo va a sustituir. No es un problema de la placa.
 
+## Prueba con la Jetson: control remoto y cámaras (26 de noviembre de 2026)
+
+Esta es la prueba que pide el curso: la placa moviendo el carro con un control remoto, con la imagen de la cámara a la vista desde otra computadora.
+
+<video controls playsinline width="360" poster="../assets/img/prueba-control-remoto.jpg" src="../assets/video/prueba-control-remoto.mp4"></video>
+
+**Video 1.** El carro manejado en el piso con el control de Xbox, alimentado solo con su batería. Si el video no se reproduce, se puede [descargar aquí](../assets/video/prueba-control-remoto.mp4).
+
+### Cómo quedó conectado
+
+![Carro durante la prueba](../assets/img/prueba-control-remoto.jpg "Figura 8. El carro durante la prueba en el piso, con la placa, la Jetson y la cámara montadas.")
+
+- **Energía:** todo sale de la batería 3S a través de la placa. La Jetson Orin Nano se alimenta por J5 con los 10 V del regulador U21; el servo y el motor, por sus rieles propios.
+- **Jetson → ESP32:** cable USB de la Jetson a J1. El convertidor CH340C de la placa aparece en la Jetson como `/dev/esp32`.
+- **Control → Jetson:** control de Xbox por Bluetooth.
+- **Jetson → laptop:** página web por WiFi en el puerto 8080, con la cámara, el estado del carro y el voltaje de la batería.
+
+El código de la Jetson está copiado en [`jetson/demo-control-remoto/`](../jetson/demo-control-remoto/) y el firmware del ESP32 es [`firmware/carro-v2`](../firmware/carro-v2).
+
+### Qué hace cada parte
+
+El ESP32 corre `carro-v2`. Recibe por el USB líneas como `V30,S-50` (velocidad y dirección de −100 a 100) y responde 20 veces por segundo con la velocidad del encoder, la posición del servo, el voltaje de la batería y su estado. El firmware se encarga solo de las protecciones: si en 300 ms no le llega nada, frena; con batería baja limita la velocidad y suena el buzzer; y el servo nunca sale del rango 1190–1680 µs.
+
+En la Jetson corren cuatro programas de ROS 2: uno lee el control, otro lo convierte en comandos (con LB como "hombre muerto": si se suelta, el carro frena), otro habla con el ESP32 y el último sirve la página de las cámaras. Un servicio de Linux los arranca solos al prender la Jetson, así que basta con encender el interruptor de la placa.
+
+### Resultados
+
+**Tabla 3.** Resultados de la prueba.
+
+| Qué se revisó | Resultado |
+|---|---|
+| Subir el firmware desde la Jetson (`pio run -e jetson -t upload`) | Correcto, con los jumpers de JP1 y sin tocar botones |
+| Comunicación Jetson ↔ ESP32 por USB | Telemetría estable a 20 Hz; ida y vuelta de un mensaje en ~24 ms |
+| Lectura de batería en la placa | 12.5–12.7 V en la página con la batería cargada |
+| Jetson alimentada desde J5 | Arranca y trabaja con la batería sin reiniciarse |
+| Arranque automático | Con el interruptor de la placa, en menos de un minuto ya responden la página y el control, sin monitor ni teclado |
+| Control de Xbox | 10 de 10 comprobaciones: avanza, reversa, gira a los dos lados, turbo, y frena al soltar LB |
+| Tiempo de respuesta | ~0.1 s desde el control hasta que el servo empieza a moverse |
+| Cámara de carriles, ojo de pez (cam0) | Se ve en la página a 10 cuadros por segundo, 640 × 360 |
+| Carga de la Jetson | ~23 % de CPU, ~6.2 W y 48–50 °C con todo corriendo |
+
+El servo ya no se fuerza en el tope derecho: se ajustó a 1680 µs porque en 1730 sonaba forzado.
+
+### Lo que quedó pendiente
+
+- **Segunda cámara (cam1):** la Jetson no la detecta (no responde por I2C). Es un problema del cable o del conector, no de la placa; mientras tanto la página la muestra en negro y la otra cámara sigue funcionando.
+- **Video por internet:** en la red de la casa la página va fluida; por Tailscale, desde fuera de la red, se pone lenta.
+- **WiFi y Bluetooth:** en la Jetson comparten antena, y con el video transmitiéndose el control responde un poco más lento. Se puede resolver con un adaptador Bluetooth USB aparte.
+
 ## Estado al 16 de noviembre de 2026
 
 La placa ya existe. Está en la línea de ensamblaje de PCBWay con los componentes de montaje superficial soldados y los through-hole colocados. El 16 de noviembre el ensamblador mandó fotos para confirmar la orientación de las piezas con polaridad antes de terminar de soldar, recortar terminales y limpiar.
@@ -105,10 +154,10 @@ Es una revisión de fotos. Sirve para descartar piezas al revés, no para saber 
 - La parte lógica funciona con USB: ESP32, convertidor USB, regulador de 3.3 V, botones y LED HB.
 - Los cuatro reguladores dan el voltaje de diseño con la batería y no se calientan.
 - El puente H, el servo, el encoder y el paro por hardware funcionan con la placa montada en el carro.
+- La placa alimenta a la Jetson por J5 y se comunica con ella por USB, que era la falla principal de la v1. El carro se maneja con un control de Xbox viendo la cámara desde una laptop.
 
 ## Lo que falta comprobar
 
-- La Jetson alimentada desde J5 y la comunicación con el ESP32, que fue la falla principal de la v1.
 - Estabilidad y rizado de los reguladores de 10 V y del servo con osciloscopio.
 - Voltajes con la Jetson y el servo trabajando al mismo tiempo.
 - Comportamiento térmico en recorridos largos.

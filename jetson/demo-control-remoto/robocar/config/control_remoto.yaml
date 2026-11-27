@@ -1,0 +1,60 @@
+# Parametros de control_remoto_launch.py (Xbox + puente serial + camaras).
+# Los numeros con punto (30.0) son decimales; los demas son enteros. No mezclar.
+
+game_controller_node:
+  ros__parameters:
+    device_id: 0
+    deadzone: 0.0              # la zona muerta la aplica teleop_xbox_node
+    autorepeat_rate: 20.0      # sigue publicando /joy aunque no cambie nada (el teleop lo necesita)
+    coalesce_interval_ms: 1
+
+teleop_xbox_node:
+  ros__parameters:
+    # Indices de /joy del mapeo ESTANDAR de game_controller_node. Para este control BLE (045e:0b13) solo
+    # valen con el SDL_GAMECONTROLLERCONFIG propio (config/sdl_gamecontroller.txt, que el launch pasa
+    # a game_controller_node). Calibrado el 26-nov con scripts/calibrar_control.py. Ver en vivo:
+    #   python3 ~/robocar_ws/scripts/ver_joy.py --lanzar
+    eje_vel: 1                 # LY, stick izquierdo vertical: arriba = +1
+    eje_dir: 2                 # RX, stick derecho horizontal: izquierda = +1, derecha = -1, centro = 0
+    signo_vel: 1.0             # si arriba da reversa, poner -1.0
+    signo_dir: -1.0            # derecha (-1) x -1 = +100 = S+ = servo a 1680 us (derecha; era 1730 hasta el 26-nov). Si gira al reves, poner 1.0
+    boton_hombre_muerto: 9     # LB (mantenido)
+    boton_turbo: 10            # RB
+    zona_muerta: 0.08
+    vel_max: 30.0              # % de velocidad hacia adelante
+    vel_max_turbo: 60.0
+    vel_max_reversa: 20.0
+    dir_max: 100.0
+    rampa_acel: 10.0           # % maximo que sube la velocidad por ciclo (20 ciclos/s)
+    rampa_freno: 30.0          # % maximo que baja por ciclo
+    timeout_joy: 0.5           # s sin /joy -> frena y centra
+    frecuencia: 20.0
+
+serial_bridge_node:
+  ros__parameters:
+    puerto: /dev/esp32
+    puerto_respaldo: /dev/ttyUSB0
+    baudios: 115200
+    periodo_envio: 0.05        # un comando cada 50 ms
+    timeout_cmd: 0.3           # s sin /carro/cmd -> manda V0,S0
+    timeout_telemetria: 0.5
+    reintento: 2.0
+
+camaras_node:
+  ros__parameters:
+    puerto_http: 8080
+    ancho: 640
+    alto: 360                   # 640x360 (16:9) desde el 26-nov: menos peso por WiFi; antes 640x480
+    fps_sensor: 30
+    fps_stream: 10.0           # 10 fps desde el 26-nov (a peticion de Pato; menos WiFi, el video atrasaba el control Bluetooth); antes 15.0
+    calidad_jpeg: 70
+    sensor_cam0: 0
+    sensor_cam1: 1
+    dev_video_cam0: /dev/video0   # si no existe, NO se llama a nvargus con ese sensor
+    dev_video_cam1: /dev/video1
+    giro_cam0: 2                  # cam0 va montada al reves (26-nov): flip-method 2 = girar 180 grados
+    giro_cam1: 0
+    espera_dispositivo_s: 10.0    # cada cuanto se revisa si aparecio el /dev/videoN
+    backoff_ini_s: 2.0            # espera tras una caida: 2, 4, 8, 16 y 30 s (maximo)
+    backoff_max_s: 30.0
+    edad_max_estado: 1.5
